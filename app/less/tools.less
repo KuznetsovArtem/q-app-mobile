@@ -2,14 +2,14 @@
   padding-top: @header-height;
   min-height: 100%;
   margin: 0 0; // rm container margins
-  .row {
+  >.row {
     padding: 0 0; // rm row padding for 100% width fields
+    margin: 0;
   }
 }
 .float-btn() {
   border: none;
   border-top: 1px solid @brand-gray-4;
-  padding: 10px;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -21,13 +21,14 @@
   }
 }
 
-.full-bottom-btn() {
-  .float-btn();
-  width: 100%;
+.bottom-btn() {
+  padding: 10px;
 }
 
-.half-bottom-btn() {
-  width: 50%;
+.full-bottom-btn() {
+  .float-btn();
+  .bottom-btn();
+  width: 100%;
 }
 
 .border-radius() {

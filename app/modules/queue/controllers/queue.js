@@ -10,7 +10,8 @@ angular
     .module('queue')
     .controller('QueueController', [
         '$scope',
-        function($scope) {
+        'localizationService',
+        function($scope, localizationService) {
 
 
         }

@@ -17,7 +17,14 @@ angular
                     'profile.userData'              : 'Личные даные',
                     'profile.letterToDev'           : 'Написать разработчикам',
                     'profile.licenseAgreement'      : 'Лицензионное соглашение',
-                    'profile.about'                 : 'О программе'
+                    'profile.about'                 : 'О программе',
+                    'queue.organization'            : 'Организация',
+                    'queue.service'                 : 'Услуга',
+                    'queue.date'                    : 'Дата',
+                    'queue.time'                    : 'Время',
+                    'queue.registeringCost'         : 'стоимость регистрации',
+                    'queue.canselBtn'               : 'ОТМЕНА',
+                    'queue.signupNtn'               : 'РЕГИСТРАЦИЯ'
                 };
 
                 var translate = function(key) {

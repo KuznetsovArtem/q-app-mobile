@@ -1,4 +1,50 @@
 <ng-include src="'modules/core/views/header.html'"></ng-include> <!--TODO:Directive-->
 <div class="queue-page">
 
+    <form class="form-group">
+        <div class="form-group">
+            <label for="organization">{{L('queue.organization')}}</label>
+            <input id="organization" class="form-control" type="text"/>
+        </div>
+        <div class="form-group">
+            <label for="service">{{L('queue.service')}}</label>
+            <input id="service" class="form-control" type="text"/>
+        </div>
+    </form>
+
+    <div class="row">
+        <!--<div class="col-xs-12">-->
+            <!--<label for="organization">{{L('queue.organization')}}</label>-->
+            <!--<input id="organization" type="text"/>-->
+        <!--</div>-->
+
+        <!--<div class="col-xs-12">-->
+            <!--<label for="service">{{L('queue.service')}}</label>-->
+            <!--<input id="service" type="text"/>-->
+        <!--</div>-->
+
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label id="date" for="date">{{L('queue.date')}}</label>
+                    <input id="organization" type="text"/>
+                </div>
+                <div class="col-xs-6">
+                    <label id="time" for="time">{{L('queue.time')}}</label>
+                    <input id="organization" type="text"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <div>{{L('queue.registeringCost')}}</div>
+        </div>
+
+    </div>
+
+    <div class="queue-footer row">
+        <div class="reg-btn col-xs-6">{{L('queue.signupNtn')}}</div>
+        <div class="cansel-btn col-xs-6">{{L('queue.canselBtn')}}</div>
+    </div>
+
 </div>

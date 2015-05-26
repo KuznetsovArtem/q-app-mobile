@@ -38,12 +38,12 @@ body {
 .login-page .login-btn {
   border: none;
   border-top: 1px solid #959595;
-  padding: 10px;
   position: absolute;
   left: 0;
   bottom: 0;
   text-align: center;
   z-index: 100;
+  padding: 10px;
   width: 100%;
   background-color: #3c6397;
   font-size: 20px;
@@ -105,6 +105,48 @@ body {
 .profile-page .profile-field.row {
   margin-right: 0;
   margin-left: 0;
+}
+.queue-page {
+  padding-top: 55px;
+  min-height: 100%;
+  margin: 0 0;
+  background-color: #cccccc;
+  color: #959595;
+}
+.queue-page > .row {
+  padding: 0 0;
+  margin: 0;
+}
+.queue-page .queue-footer {
+  border: none;
+  border-top: 1px solid #959595;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 100;
+  border-top: 2px solid #ffffff;
+  width: 100%;
+  font-size: 20px;
+}
+.queue-page .queue-footer:hover {
+  text-decoration: none;
+}
+.queue-page .queue-footer .reg-btn {
+  padding: 10px;
+  background-color: #3c6397;
+  color: #e1e1e1;
+}
+.queue-page .queue-footer .cansel-btn {
+  padding: 10px;
+  background-color: #e1e1e1;
+  color: #959595;
+}
+*:not(input):not(textarea) {
+  -webkit-user-select: none;
+  /* disable selection/Copy of UIWebView */
+  -webkit-touch-callout: none;
+  /* disable the IOS popup when long-press on a link */
 }
 #uiview {
   height: 100%;
