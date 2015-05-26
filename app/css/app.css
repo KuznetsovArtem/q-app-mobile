@@ -53,7 +53,6 @@ body {
   text-decoration: none;
 }
 .header {
-  border-bottom: 1px solid #959595;
   position: fixed;
   top: 0;
   left: 0;
@@ -86,6 +85,9 @@ body {
 .header .nav-btn.active {
   height: 55px;
   background-color: #fec24d;
+  -webkit-box-shadow: inset 5px 5px 15px 0px #545454;
+  -moz-box-shadow: inset 5px 5px 15px 0px #545454;
+  box-shadow: inset 5px 5px 15px 0px #545454;
 }
 .profile-page {
   background-color: #cccccc;
@@ -116,6 +118,13 @@ body {
 .queue-page > .row {
   padding: 0 0;
   margin: 0;
+}
+.queue-page .queue-field input {
+  border-radius: 0;
+  background-color: #e1e1e1;
+  color: #3c6397;
+  height: 50px;
+  padding-left: 50px;
 }
 .queue-page .queue-footer {
   border: none;

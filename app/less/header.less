@@ -1,5 +1,5 @@
 .header {
-  border-bottom: 1px solid @brand-gray-4;
+//  border-bottom: 1px solid @brand-gray-4;
   position: fixed;
   top: 0;
   left: 0;
@@ -32,6 +32,10 @@
     &.active {
       height: 55px;
       background-color: @brand-yellow;
+      // TODO: move to mixin
+      -webkit-box-shadow: inset 5px 5px 15px 0px rgba(84,84,84,1);
+      -moz-box-shadow: inset 5px 5px 15px 0px rgba(84,84,84,1);
+      box-shadow: inset 5px 5px 15px 0px rgba(84,84,84,1);
     }
   }
 }
