@@ -1,0 +1,31 @@
+<div class="container login-page">
+    <div class="big-logo">
+        <div class="logo"></div>
+    </div>
+
+    <div class="row header-block">
+        <div class="col-xs-6 content">{{L('login.signUp')}}</div>
+    </div>
+
+    <form class="form-horizontal login-form">
+        <div class="form-group">
+            <label for="user-login" class="col-xs-2 control-label">{{L('login.login')}}</label>
+            <div class="col-xs-10">
+                <input type="email" class="form-control input-lg" id="user-login" placeholder="Enter email">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="user-pwd" class="col-xs-2 control-label">{{L('login.password')}}</label>
+            <div class="col-xs-10">
+                <input type="password" class="form-control input-lg" id="user-pwd" placeholder="Password">
+            </div>
+        </div>
+    </form>
+
+    <div class="row login-help-block">
+        <div class="col-xs-12 text-right">
+            <a href="#TODO/forgoPwd">{{L('login.forgotPwd')}}</a>
+        </div>
+    </div>
+    <a href="#!/profile" class="login-btn">{{L('login.loginButton')}}</a>
+</div>

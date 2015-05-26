@@ -1,0 +1,111 @@
+html,
+body {
+  height: 100%;
+}
+.login-page {
+  height: 100%;
+  background-color: #ffffff;
+}
+.login-page .big-logo .logo {
+  width: 225px;
+  height: 135px;
+  background-image: url("../img/ui/ui.png");
+  margin: 95px auto;
+}
+.login-page .header-block {
+  margin: 10px 0;
+}
+.login-page .header-block .content {
+  padding: 10px;
+  text-align: center;
+  background-color: #3c6397;
+  color: #e1e1e1;
+}
+.login-page .login-form {
+  color: #959595;
+}
+.login-page .login-form label {
+  height: 46px;
+  line-height: 46px;
+  padding-left: 25px;
+}
+.login-page .login-form input {
+  border-radius: 0;
+}
+.login-page .login-help-block a {
+  padding-right: 10px;
+}
+.login-page .login-btn {
+  border: none;
+  border-top: 1px solid #959595;
+  padding: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 100;
+  width: 100%;
+  background-color: #3c6397;
+  font-size: 20px;
+  color: #e1e1e1;
+}
+.login-page .login-btn:hover {
+  text-decoration: none;
+}
+.header {
+  border-bottom: 1px solid #959595;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+}
+.header.container {
+  margin: 0;
+  padding: 0;
+}
+.header.container > .row {
+  padding: 0;
+  margin: 0 0 0 -15px;
+}
+.header .logo {
+  height: 50px;
+  background-image: url("../img/ui/ui.png");
+  background-position: 300px -3px;
+}
+.header .nav-btn {
+  background-color: #3c6397;
+  border: 1px solid #e1e1e1;
+  cursor: pointer;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 30px;
+  font-weight: 900;
+}
+.header .nav-btn.active {
+  height: 55px;
+  background-color: #fec24d;
+}
+.profile-page {
+  background-color: #cccccc;
+  color: #959595;
+  padding-top: 55px;
+  min-height: 100%;
+  margin: 0 0;
+}
+.profile-page .row {
+  padding: 0 0;
+}
+.profile-page .profile-field {
+  margin-top: 10px;
+  padding: 15px;
+  background-color: #e1e1e1;
+}
+.profile-page .profile-field.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+#uiview {
+  height: 100%;
+}

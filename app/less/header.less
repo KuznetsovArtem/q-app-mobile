@@ -1,0 +1,37 @@
+.header {
+  border-bottom: 1px solid @brand-gray-4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: @z-header;
+  width: 100%;
+
+  // fix bootstrap defaults
+  &.container {
+    margin: 0;
+    padding: 0;
+    >.row {
+      padding: 0;
+      margin: 0 0 0 -15px;
+    }
+  }
+  .logo {
+    height: 50px;
+    background-image: url("../img/ui/ui.png");
+    background-position: 300px -3px;
+  }
+  .nav-btn {
+    background-color: @brand-blue;
+    border: 1px solid @brand-gray-1;
+    cursor: pointer;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 30px;
+    font-weight: 900;
+    &.active {
+      height: 55px;
+      background-color: @brand-yellow;
+    }
+  }
+}

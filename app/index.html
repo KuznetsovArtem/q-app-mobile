@@ -1,0 +1,102 @@
+<!doctype html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- build:css styles/vendor.css -->
+        <!-- injector:bowercss -->
+        <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+        <!-- endinjector -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/custom.css -->
+        <!-- injector:css -->
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="css/customcordova.css">
+        <link rel="stylesheet" href="css/demo.css">
+        <!-- endinjector -->
+    <!-- endbuild -->
+    <script src="cordova.js"></script>
+
+  </head>
+
+  <body>
+
+    <!--<div class="header-placeholder"></div>-->
+    <!--<div role="main">-->
+        <!--<section class="bs-header text-center" id="overview">-->
+            <!--<div class="container">-->
+                <!--<h1 id="app-heading">-->
+                    <!--The App-->
+                <!--</h1>-->
+            <!--</div>-->
+        <!--</section>-->
+
+        <!--<div class="container">-->
+            <!--<div class="row">-->
+                <!--<div class="col-md-12">-->
+                    <div id="uiview" ui-view></div>
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!-- /.container -->
+    <!--</div>-->
+    <!-- /.main -->
+
+    <!--<footer class="footer">-->
+        <!--<div class="container">-->
+            <!--<p>Code licensed under <a href="https://github.com/keshavos/generator-angularjs-cordova/">MIT License</a>.</p>-->
+        <!--</div>-->
+    <!--</footer>-->
+
+    <!-- build:js scripts/vendor.js -->
+        <!-- injector:bowerjs -->
+        <script src="lib/jquery/dist/jquery.js"></script>
+        <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular-resource/angular-resource.js"></script>
+        <script src="lib/angular-mocks/angular-mocks.js"></script>
+        <script src="lib/angular-cookies/angular-cookies.js"></script>
+        <script src="lib/angular-animate/angular-animate.js"></script>
+        <script src="lib/angular-touch/angular-touch.js"></script>
+        <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+        <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="lib/angular-ui-utils/ui-utils.js"></script>
+        <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+        <!-- endinjector -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/custom.js -->
+        <!-- injector:js -->
+        <script src="js/config.js"></script>
+        <script src="js/application.js"></script>
+        <script src="modules/core/core.js"></script>
+        <script src="modules/login/login.js"></script>
+        <script src="modules/mail/mail.js"></script>
+        <script src="modules/profile/profile.js"></script>
+        <script src="modules/queue/queue.js"></script>
+        <script src="modules/core/config/routes.js"></script>
+        <script src="modules/login/config/routes.js"></script>
+        <script src="modules/mail/config/routes.js"></script>
+        <script src="modules/profile/config/routes.js"></script>
+        <script src="modules/queue/config/routes.js"></script>
+        <script src="modules/core/services/localization.js"></script>
+        <script src="modules/mail/services/mailModel.js"></script>
+        <script src="modules/queue/services/queue-model.js"></script>
+        <script src="modules/core/directives/pop-up.js"></script>
+        <script src="modules/core/controllers/home.js"></script>
+        <script src="modules/core/controllers/pop-up.js"></script>
+        <script src="modules/login/controllers/login.js"></script>
+        <script src="modules/mail/controllers/mail.js"></script>
+        <script src="modules/profile/controllers/profile.js"></script>
+        <script src="modules/queue/controllers/queue-list.js"></script>
+        <script src="modules/queue/controllers/queue.js"></script>
+        <!-- endinjector -->
+    <!-- endbuild -->
+
+  </body>
+</html>

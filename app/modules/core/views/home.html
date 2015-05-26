@@ -1,0 +1,64 @@
+<div class="page-header">
+    <h1 id="home-h1">{{moduleName}}</h1>
+</div>
+<p id="home-content">
+    Just the home page!
+</p>
+
+<button class="button button-block button-positive" ng-click="vibrate()">
+    Vibrate me!
+</button>
+
+<div class="card">
+    <div class="item">
+        <strong>You are currently</strong> &nbsp {{connectionType}}
+    </div>
+    <div class="item">
+        <strong>Network Type</strong> &nbsp {{networkType}}
+    </div>
+</div>
+
+<div class="padding">
+    <button class="button button-block button-positive" ng-click="refresh()">
+        Refresh
+    </button>
+</div>
+
+
+<div class="card">
+    <div class="item item-divider">
+        Get My Current Location
+    </div>
+    <div class="item">
+        <strong>Longitude </strong> &nbsp {{position.coords.longitude}}
+    </div>
+    <div class="item">
+
+        <strong>Latitude </strong> &nbsp {{position.coords.latitude}}
+    </div>
+    <div class="item" ng-show="errorMsg">
+        <p>{{errorMsg}}</p>
+    </div>
+</div>
+
+<div class="padding">
+    <button class="button button-block button-positive" ng-click="getLocation()">
+        Get My Location
+    </button>
+</div>
+
+<div class="padding">
+    <button class="button button-block button-positive" ng-click="useCORS()">
+        Get CORS
+    </button>
+</div>
+<div class="padding">
+    <button class="button button-block button-positive" ng-click="useJSONP()">
+        Get JSONP
+    </button>
+</div>
+<div class="padding">
+    <button class="button button-block button-positive" ng-click="useGET()">
+        Get HTTPs
+    </button>
+</div>

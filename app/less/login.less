@@ -1,0 +1,52 @@
+html, body{
+  height: 100%;
+}
+
+.login-page {
+  height: 100%;
+  background-color: #ffffff;
+
+  .big-logo {
+    .logo {
+      width: 225px;
+      height: 135px;
+      background-image: url("../img/ui/ui.png");
+      margin: 95px auto;
+    }
+  }
+
+  .header-block {
+    margin: 10px 0;
+    .content {
+      padding: 10px;
+      text-align: center;
+      background-color: @brand-blue;
+      color: @brand-gray-1;
+    }
+  }
+
+  .login-form {
+    color: @brand-gray-4;
+    label {
+      height: 46px;
+      line-height: 46px;
+      padding-left: 25px;
+    }
+    input {
+      .border-radius();
+    }
+  }
+
+  .login-help-block {
+    a {
+      padding-right: 10px;
+    }
+  }
+
+  .login-btn {
+    .full-bottom-btn();
+    background-color: @brand-blue;
+    font-size: 20px;
+    color: @brand-gray-1;
+  }
+}

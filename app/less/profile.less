@@ -1,0 +1,20 @@
+.profile-page {
+  background-color: @brand-gray-2;
+  color: @brand-gray-4;
+
+  padding-top: @header-height;
+  min-height: 100%;
+  margin: 0 0; // rm container margins
+  .row {
+    padding: 0 0; // rm row padding for 100% width fields
+  }
+  .profile-field {
+    &.row {
+      margin-right: 0;
+      margin-left: 0;
+    }
+    margin-top: 10px;
+    padding: 15px;
+    background-color: @brand-gray-1;
+  }
+}

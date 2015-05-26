@@ -1,0 +1,37 @@
+.page-fix() {
+  padding-top: @header-height;
+  min-height: 100%;
+  margin: 0 0; // rm container margins
+  .row {
+    padding: 0 0; // rm row padding for 100% width fields
+  }
+}
+.float-btn() {
+  border: none;
+  border-top: 1px solid @brand-gray-4;
+  padding: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  //background-image: url("/img/ui/ui.png");
+  z-index: @z-float-btn;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.full-bottom-btn() {
+  .float-btn();
+  width: 100%;
+}
+
+.half-bottom-btn() {
+  width: 50%;
+}
+
+.border-radius() {
+  //-webkit-border-radius: 0;
+  //-moz-border-radius: 0;
+  border-radius: 0;
+}
