@@ -10,15 +10,15 @@ angular
     .directive('popUp', [
         function() {
             return {
-                // name: '',
+                name: 'popUp',
                 // priority: 1,
                 // terminal: true,
-                // scope: {}, // {} = isolate, true = child, false/undefined = no change
-                // controller: function($scope, $element, $attrs, $transclude) {},
+                scope: true, // {} = isolate, true = child, false/undefined = no change
+                controller: 'PopUpController',
                 // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
-                // restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+                restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
                 // template: '',
-                // templateUrl: '',
+                templateUrl: 'modules/core/views/pop-up.html',
                 // replace: true,
                 // transclude: true,
                 // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),

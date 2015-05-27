@@ -10,21 +10,25 @@
 // z-index
 @z-float-btn: 100;
 @z-header: 100;
+@z-pop-up-window: 150;
 
 //sizes
 @header-height: 55px;
+
+html, body{
+  height: 100%;
+}
+*:not(input):not(textarea) {
+  -webkit-user-select: none; /* disable selection/Copy of UIWebView */
+  -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
+}
+#uiview {
+  height: 100%;
+}
 
 @import "tools.less";
 @import "login.less";
 @import "header.less";
 @import "profile.less";
 @import "queue.less";
-
-*:not(input):not(textarea) {
-  -webkit-user-select: none; /* disable selection/Copy of UIWebView */
-  -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
-}
-
-#uiview {
-  height: 100%;
-}
+@import "popUp.less";

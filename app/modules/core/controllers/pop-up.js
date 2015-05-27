@@ -11,7 +11,9 @@ angular
     .controller('PopUpController', [
         '$scope',
         function($scope) {
-
+            console.log('pop up ctrl');
+            $scope.showPopUp = false;
+            $scope.data = '[--++--]';
 
         }
 ]);

@@ -2,9 +2,25 @@ html,
 body {
   height: 100%;
 }
-.login-page {
+*:not(input):not(textarea) {
+  -webkit-user-select: none;
+  /* disable selection/Copy of UIWebView */
+  -webkit-touch-callout: none;
+  /* disable the IOS popup when long-press on a link */
+}
+#uiview {
   height: 100%;
+}
+.login-page {
+  min-height: 100%;
+  height: 100%;
+  margin: 0 0;
+  padding: 0 0;
   background-color: #ffffff;
+}
+.login-page > .row {
+  padding: 0 0;
+  margin: 0;
 }
 .login-page .big-logo .logo {
   width: 225px;
@@ -24,13 +40,29 @@ body {
 .login-page .login-form {
   color: #959595;
 }
+.login-page .login-form .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+.login-page .login-form .col-xs-3,
+.login-page .login-form .col-xs-9 {
+  padding-left: 0;
+  padding-right: 0;
+}
 .login-page .login-form label {
-  height: 46px;
-  line-height: 46px;
-  padding-left: 25px;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 10px !important;
 }
 .login-page .login-form input {
   border-radius: 0;
+  border: none;
+  height: 50px;
+  padding-left: 50px;
+  -webkit-box-shadow: none;
+}
+.login-page .login-form input:focus {
+  border: 1px solid #cccccc;
 }
 .login-page .login-help-block a {
   padding-right: 10px;
@@ -151,12 +183,19 @@ body {
   background-color: #e1e1e1;
   color: #959595;
 }
-*:not(input):not(textarea) {
-  -webkit-user-select: none;
-  /* disable selection/Copy of UIWebView */
-  -webkit-touch-callout: none;
-  /* disable the IOS popup when long-press on a link */
-}
-#uiview {
+.pop-up {
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100%;
+  width: 100%;
+  background-color: gray;
+  z-index: 150;
+}
+.pop-up .wrapper {
+  padding: 75px 50px;
+  height: 100%;
+}
+.pop-up .wrapper .container {
+  border: 1px solid #cccccc;
 }
