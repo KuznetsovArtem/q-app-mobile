@@ -8,6 +8,15 @@
  */
 angular
     .module('core')
+    .controller('HeaderController', [
+        '$scope',
+        '$location',
+        function($scope, $location) {
+            $scope.isActive = function (viewLocation) {
+                return viewLocation === $location.path();
+            };
+        }
+    ])
     .controller('HomeController', ['$scope',
         '$http',
         '$cordovaVibration',

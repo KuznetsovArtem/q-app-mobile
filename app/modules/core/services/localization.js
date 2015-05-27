@@ -24,7 +24,7 @@ angular
                     'queue.time'                    : 'Время',
                     'queue.registeringCost'         : 'стоимость регистрации',
                     'queue.canselBtn'               : 'ОТМЕНА',
-                    'queue.signupNtn'               : 'РЕГИСТРАЦИЯ'
+                    'queue.signupBtn'               : 'РЕГИСТРАЦИЯ'
                 };
 
                 var translate = function(key) {

@@ -4,7 +4,7 @@
     </div>
 
     <div class="row header-block">
-        <div class="col-xs-6 content" ng-click="showPopUp = !showPopUp">{{L('login.signUp')}}</div>
+        <div class="col-xs-6 content">{{L('login.signUp')}}</div>
     </div>
 
     <form class="form-horizontal login-form">
@@ -24,10 +24,21 @@
 
     <div class="row login-help-block">
         <div class="col-xs-12 text-right">
-            <a href="#TODO/forgoPwd">{{L('login.forgotPwd')}}</a>
+            <span class="link" ng-click="showPopUp = !showPopUp">{{L('login.forgotPwd')}}</span>
         </div>
     </div>
     <a href="#!/profile" class="login-btn">{{L('login.loginButton')}}</a>
 </div>
 
-<pop-up></pop-up>
+<pop-up ng-if="showPopUp">
+    <div>data</div>
+    <div class="row">
+        <div>asldfkajsdlfad</div>
+        <div>asldfkajsdlfad</div>
+        <div>asldfkajsdlfad</div>
+        <div>asldfkajsdlfad</div>
+        <div>asldfkajsdlfad</div>
+        <div>asldfkajsdlfad</div>
+        <button ng-click="showPopUp = false">Close</button>
+    </div>
+</pop-up>

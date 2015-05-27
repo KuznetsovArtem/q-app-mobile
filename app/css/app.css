@@ -64,7 +64,9 @@ body {
 .login-page .login-form input:focus {
   border: 1px solid #cccccc;
 }
-.login-page .login-help-block a {
+.login-page .login-help-block .link {
+  color: #3c6397;
+  text-decoration: underline;
   padding-right: 10px;
 }
 .login-page .login-btn {
@@ -117,9 +119,7 @@ body {
 .header .nav-btn.active {
   height: 55px;
   background-color: #fec24d;
-  -webkit-box-shadow: inset 5px 5px 15px 0px #545454;
-  -moz-box-shadow: inset 5px 5px 15px 0px #545454;
-  box-shadow: inset 5px 5px 15px 0px #545454;
+  box-shadow: 1px 2px 6px -3px #000000 inset;
 }
 .profile-page {
   background-color: #cccccc;
@@ -134,11 +134,26 @@ body {
 .profile-page .profile-field {
   margin-top: 10px;
   padding: 15px;
+  padding-left: 50px;
   background-color: #e1e1e1;
 }
 .profile-page .profile-field.row {
   margin-right: 0;
   margin-left: 0;
+}
+.profile-page .profile-field .first-col-fix {
+  padding-left: 0;
+}
+.profile-page .profile-field a {
+  display: block;
+  color: #959595;
+  text-decoration: none;
+}
+.profile-page .profile-field select {
+  border: none;
+  color: #3c6397;
+  background-color: #e1e1e1;
+  -webkit-box-shadow: none;
 }
 .queue-page {
   padding-top: 55px;
@@ -189,7 +204,6 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: gray;
   z-index: 150;
 }
 .pop-up .wrapper {
