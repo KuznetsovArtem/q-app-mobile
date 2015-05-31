@@ -26,6 +26,7 @@ module.exports = function(config) {
             'app/lib/angular-bootstrap/ui-bootstrap-tpls.js',
             'app/lib/angular-ui-utils/ui-utils.js',
             'app/lib/angular-ui-router/release/angular-ui-router.js',
+            'app/lib/angular-route/angular-route.js',
             'app/lib/ngCordova/dist/ng-cordova.js',
             <!-- endinjector -->
 

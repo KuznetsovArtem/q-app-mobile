@@ -1,0 +1,44 @@
+<div class="modal-header date-page">
+    <h3 class="modal-title text-center">{{dt | date:'EEEE' }}</h3>
+</div>
+<div class="modal-body date-page">
+
+    <style>
+        .full button span {
+            background-color: limegreen;
+            border-radius: 32px;
+            color: black;
+        }
+        .partially button span {
+            background-color: orange;
+            border-radius: 32px;
+            color: black;
+        }
+    </style>
+
+    <div class="date-hero text-center">
+        <span class="date-hero-small">{{dt | date:'MMMM' }}</span>
+        <span>{{dt | date:'dd' }}</span>
+        <span class="date-hero-small">{{dt | date:'yyyy' }}</span>
+    </div>
+
+    <div style="display:inline-block; min-height:290px;width: 100%">
+        <datepicker ng-model="dt" min-date="minDate" show-weeks="false" starting-day="1" class=""
+                    custom-class="getDayClass(date, mode)"></datepicker>
+    </div>
+
+    <!--<div class="row">-->
+        <!--<div class="col-md-6">-->
+            <!--<label>Format:</label> <select class="form-control" ng-model="format" ng-options="f for f in formats"><option></option></select>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <hr />
+    <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+    <!--<button type="button" class="btn btn-sm btn-default" ng-click="dt = '2009-08-24'">2009-08-24</button>-->
+    <!--<button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>-->
+    <!--<button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" tooltip="After today restriction">Min date</button-->
+</div>
+<div class="modal-footer">
+    <a href class="btn-apply-100" ng-click="ok()">{{L('app.done')}}</a>
+</div>

@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{L('login.restorePwd')}}</h3>
+</div>
+<div class="modal-body restore-page">
+    <span class="modal-body_text">{{L('login.restore.description')}}</span>
+    <form class="form-horizontal login-form">
+        <div class="form-group">
+            <input id="service" class="form-control" type="text"/>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <a href class="btn-cancel-50" ng-click="ok()">{{L('login.restore.cancel')}}</a>
+    <a href class="btn-apply-50" ng-click="cancel()">{{L('login.restore.send')}}</a>
+</div>

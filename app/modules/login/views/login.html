@@ -3,6 +3,14 @@
         <div class="logo"></div>
     </div>
 
+    <!--<div>-->
+        <!--<button class="btn btn-default" ng-click="open()">Open me!</button>-->
+        <!--<button class="btn btn-default" ng-click="open('lg')">Large modal</button>-->
+        <!--<button class="btn btn-default" ng-click="open('sm')">Small modal</button>-->
+        <!--<button class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>-->
+        <!--<div ng-show="selected">Selection from a modal: {{ selected }}</div>-->
+    <!--</div>-->
+
     <div class="row header-block">
         <div class="col-xs-6 content">{{L('login.signUp')}}</div>
     </div>
@@ -24,21 +32,8 @@
 
     <div class="row login-help-block">
         <div class="col-xs-12 text-right">
-            <span class="link" ng-click="showPopUp = !showPopUp">{{L('login.forgotPwd')}}</span>
+            <span class="link" ng-click="restorePass()">{{L('login.forgotPwd')}}</span>
         </div>
     </div>
     <a href="#!/profile" class="login-btn">{{L('login.loginButton')}}</a>
 </div>
-
-<pop-up ng-if="showPopUp">
-    <div>data</div>
-    <div class="row">
-        <div>asldfkajsdlfad</div>
-        <div>asldfkajsdlfad</div>
-        <div>asldfkajsdlfad</div>
-        <div>asldfkajsdlfad</div>
-        <div>asldfkajsdlfad</div>
-        <div>asldfkajsdlfad</div>
-        <button ng-click="showPopUp = false">Close</button>
-    </div>
-</pop-up>

@@ -7,6 +7,20 @@
     margin: 0;
   }
 }
+
+.input-fix() {
+  .border-radius();
+  border: none;
+  height: 50px;
+  padding-left: 50px;
+  background-color: @brand-gray-1;
+  color: @brand-blue;
+  -webkit-box-shadow: none;
+  &:focus {
+    border: 1px solid @brand-gray-2;
+  }
+}
+
 .float-btn() {
   border: none;
   border-top: 1px solid @brand-gray-4;
@@ -35,4 +49,20 @@
   //-webkit-border-radius: 0;
   //-moz-border-radius: 0;
   border-radius: 0;
+}
+
+// app ui
+.brand-header() {
+  font-size: 16px;
+  color: @brand-blue;
+}
+
+// ng classes
+.ng {
+  &-hide {
+    display: none !important;
+  }
+  &-show {
+    display: block !important;
+  }
 }

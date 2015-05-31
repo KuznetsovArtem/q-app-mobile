@@ -1,0 +1,69 @@
+.modal-dialog {
+  .modal-content {
+    .border-radius();
+
+    .modal-header {
+      background-color: #FFFFFF;
+      padding-left: 60px; 
+      h3 {
+        .brand-header();
+      }
+    }
+
+    .modal-body {
+      background-color: @brand-gray-2;
+
+      .modal-body_text {
+        display: inline-block;
+        padding: 20px 0;
+        font-size: 14px;
+        color: @brand-gray-4;
+      }
+      input {
+        .input-fix();
+      }
+    }
+
+    .modal-footer {
+      height: 50px;
+      padding: 0;
+      text-align: center;
+      border-top: none;
+
+      .modal-btn() {
+        padding: 10px;
+        width: 50%;
+        float: left;
+        height: 50px;
+        font-size: 20px;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+      .btn-apply-50 {
+        .modal-btn();
+        background-color: @brand-blue;
+        color: @brand-gray-1;
+      }
+      .btn-apply-100 {
+        .modal-btn();
+        width: 100%;
+        background-color: @brand-blue;
+        color: @brand-gray-1;
+      }
+      .btn-cancel-50 {
+        .modal-btn();
+        background-color: @brand-gray-1;
+        color: @brand-gray-4;
+      }
+      .btn-apply-yellow {
+        .modal-btn();
+        background-color: @brand-yellow;
+        .brand-header();
+        font-size: 16px;
+        width: 100%
+      }
+    }
+  }
+}

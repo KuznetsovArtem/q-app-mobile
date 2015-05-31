@@ -1,4 +1,15 @@
 <ng-include src="'modules/core/views/header.html'"></ng-include> <!--TODO:Directive-->
-<section>
-	This is the Queue list
-</section>
+
+<div class="queue-list-page">
+    <div class="row">
+        <div ng-repeat="n in [1,2,3,4,5,6,7,8]" class="col-xs-12 row item">
+            <div class="col-xs-10 content-block">
+                name 1 <br/>
+                type 1 <br/>
+                time <br/>
+                time left
+            </div>
+            <div class="col-xs-2 edit-link">go</div>
+        </div>
+    </div>
+</div>
