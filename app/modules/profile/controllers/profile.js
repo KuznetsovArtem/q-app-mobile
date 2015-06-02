@@ -66,19 +66,25 @@ angular
                 var modalInstance = $modal.open({
                     animation: $scope.animationsEnabled,
                     templateUrl: 'modules/profile/views/cities-select.html',
-                    controller: function($scope, $modalInstance) {
+                    resolve: {
+                        user : function() {
+                            return UserModel.getUser(1);
+                        }
+                    },
+                    controller: function($scope, $modalInstance, user) {
+                        // TODO: $get api -> Storage -> get
                         $scope.cities = [{
                             name: 'Kiev',
                             id : 1
                         },{
                             name: 'Kharkiv',
-                            id : 1
+                            id : 2
                         },{
                             name: 'Dnipropetrovsk',
-                            id : 1
+                            id : 3
                         },{
                             name: 'Odessa',
-                            id : 1
+                            id : 4
                         },{
                             name: 'Zaporizhia',
                             id : 1
@@ -96,14 +102,22 @@ angular
                             id : 1
                         }];
 
+                        $scope.selectedCity = user.address.cityid;
+
+                        $scope.selectCity = function(id) {
+                            $scope.selectedCity = id;
+                        };
+
                         $scope.ok = function () {
-                            $modalInstance.close('TODO:DATA');
+                            $modalInstance.close($scope.selectedCity);
                         };
                     },
                     size: size
                 });
 
-                modalInstance.result.then(function (apply) {}, function () {});
+                modalInstance.result.then(function (cityId) {
+                    // TODO: update user model -> save;
+                }, function () {});
             };
 
         }

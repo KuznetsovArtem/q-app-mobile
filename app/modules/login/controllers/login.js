@@ -29,13 +29,22 @@ angular
     .controller('LoginController', [
         '$scope',
         'localizationService',
+        '$state',
         '$modal',
         '$log',
         'UserModel',
         'auth',
-        function($scope, localizationService, $modal, $log, UserModel, auth) {
+        function($scope, localizationService, $state, $modal, $log, UserModel, auth) {
 
             console.log('auth', auth);
+
+            $scope.login = function() {
+                console.log('login');
+                if(auth || !auth) { // TODO: check auth
+                   $state.go('settings', {}, {reload: false});
+                }
+            };
+
             $scope.registerUser = function() {
                 var modalRegister = $modal.open({
                     animation: false,
