@@ -22,9 +22,9 @@ angular
              *
             */
             $stateProvider
-                .state('profile', {
-                    url: '/profile',
-                    templateUrl: 'modules/profile/views/profile.html',
+                .state('settings', {
+                    url: '/settings',
+                    templateUrl: 'modules/profile/views/settings.html',
                     controller: 'ProfileController'
                 });
         }

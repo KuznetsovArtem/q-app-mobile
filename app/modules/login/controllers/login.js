@@ -8,13 +8,76 @@
 */
 angular
     .module('login')
+    .controller('RegisterController', [
+        '$scope',
+        '$modalInstance',
+        'user',
+        function($scope, $modalInstance, user) {
+
+            $scope.user = user;
+
+            $scope.ok = function () {
+                //userModel.save($scope.user);;
+                $modalInstance.close(
+                    angular.toJson($scope.user)
+                );
+            };
+
+            $scope.cancel = function () {
+                $modalInstance.dismiss('cancel');
+            };
+        }
+    ])
     .controller('LoginController', [
         '$scope',
         'localizationService',
         '$modal',
         '$log',
-        function($scope, localizationService, $modal, $log) {
-            $scope.items = ['item1', 'item2', 'item3'];
+        'UserModel',
+        function($scope, localizationService, $modal, $log, UserModel) {
+
+            $scope.registerUser = function() {
+                var modalRegister = $modal.open({
+                    animation: false,
+                    templateUrl: 'modules/profile/views/profile.html',
+                    controller: 'RegisterController',
+                    resolve : {
+                        user : function() {
+                            return { // test data; TOTO: rm
+                                "phone": "911911911",
+                                "email": "test@domain.com",
+                                "login": "test",
+                                "password": "password",
+                                "firstname": "Test",
+                                "lastname": "Test1",
+                                "birthdate": "01/01/1976",
+                                "address": {
+                                    "cityid": 1,
+                                    "description": ""
+                                },
+                                "profile": {
+                                    "languageid": 1
+                                },
+                                "paytools": [
+                                    {
+                                        "paytoolid": "",
+                                        "pan": "",
+                                        "dateexp": ""
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                });
+
+                modalRegister.result.then(function (data) {
+                    UserModel.save(data).then(function(data) {
+                        console.log('deferred user', data);
+                    });
+                }, function () {
+                    $log.info('Modal dismissed at: ' + new Date());
+                });
+            };
 
             $scope.animationsEnabled = false; // TODO: move to config factory
 
@@ -39,18 +102,15 @@ angular
                 });
             };
 
-            $scope.toggleAnimation = function () {
-                $scope.animationsEnabled = !$scope.animationsEnabled;
-            };
         }
     ])
     .controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
         $scope.ok = function () {
-            //$modalInstance.close($scope.selected.item);
             $modalInstance.close('TODO:DATA');
         };
 
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
         };
-    });
+    })
+    ;

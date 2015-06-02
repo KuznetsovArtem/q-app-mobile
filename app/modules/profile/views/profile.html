@@ -1,32 +1,65 @@
-<ng-include src="'modules/core/views/header.html'"></ng-include> <!--TODO:Directive-->
-<div class="profile-page container">
+<div class="modal-header">
+    <h3 class="modal-title">{{L('user.register')}}</h3>
+</div>
 
-    <div class="row">
-        <div class="col-xs-12 profile-field row">
-            <div class="col-xs-6 first-col-fix">{{L('profile.lang')}}</div>
-            <div class="col-xs-6 text-right">
-                <select name="user-lang" id="user-lang">
-                    <option ng-repeat="lang in languages" value="{{lang.id}}">{{lang.name}}</option>
-                </select>
-            </div>
+<!--// TODO: -->
+    <!--if userId -> profile - save-->
+    <!--if !userId -> register - add user-->
+
+<div class="modal-body restore-page">
+    <span class="modal-body_text">{{user.name}}</span>
+    <form class="form-horizontal login-form">
+
+        <div class="form-group">
+            <label for="phone">{{L('user.phone')}}</label>
+            <input ng-model="user.phone" id="phone" class="form-control" type="text"/>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">{{L('user.email')}}</label>
+            <input ng-model="user.email" id="email" class="form-control" type="text"/>
+        </div> 
+        
+        <div class="form-group">
+            <label for="login">{{L('user.login')}}</label>
+            <input ng-model="user.login" id="login" class="form-control" type="text"/>
+        </div>
+                
+        <div class="form-group">
+            <label for="password">{{L('user.password')}}</label>
+            <input ng-model="user.password" id="password" class="form-control" type="text"/>
+        </div>           
+        
+        <!--TODO-->
+        <div class="form-group">
+            <label for="password2">{{L('user.password')}}</label>
+            <input ng-model="user.password2" id="password2" class="form-control" type="text"/>
+        </div>
+        
+        <div class="form-group">
+            <label for="firstname">{{L('user.firstname')}}</label>
+            <input ng-model="user.firstname" id="firstname" class="form-control" type="text"/>
+        </div>  
+        
+        <div class="form-group">
+            <label for="lastname">{{L('user.lastname')}}</label>
+            <input ng-model="user.lastname" id="lastname" class="form-control" type="text"/>
         </div>
 
-        <div class="col-xs-12 profile-field row" ng-click="showCities()">
-            <div class="col-xs-6 first-col-fix">{{L('profile.city')}}</div>
-            <div class="col-xs-6 text-right">
-                <select name="user-city" id="user-city">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-            </div>
-        </div>
+        <!--TODO: date of birth-->
+        <!--TODO: adress-->
 
-        <div class="col-xs-12 profile-field">{{L('profile.userData')}}</div>
-        <div class="col-xs-12 profile-field">
-            <a href="mailto:murdoc.ak@gamil.com">{{L('profile.letterToDev')}}</a>
+        <div class="form-group">
+            <label for="data">{{L('user.data')}}</label>
+            <input ng-model="user.data" id="data" class="form-control" type="text"/>
         </div>
-        <div class="col-xs-12 profile-field" ng-click="showAgreement()">{{L('profile.licenseAgreement')}}</div>
-        <div class="col-xs-12 profile-field" ng-click="showAgreement()">{{L('profile.about')}}</div>
-    </div>
+        
+        
+        
+    </form>
+</div>
+
+<div class="modal-footer">
+    <a href class="btn-cancel-50" ng-click="cancel()">{{L('login.restore.cancel')}}</a>
+    <a href class="btn-apply-50" ng-click="ok()">{{L('login.restore.send')}}</a>
 </div>
