@@ -28,13 +28,19 @@ angular
                     controller: 'QueueListController'
                 })
                 .state('queueAdd', {
-                    url: '/queue',
+                    url: '/queue/add',
                     templateUrl: 'modules/queue/views/queue.html',
                     controller: 'QueueController'
-                }).state('queueEdit', {
+                })
+                .state('queueView', {
                     url: '/queue/:id',
-                    templateUrl: 'modules/queue/views/queue.html',
+                    templateUrl: 'modules/queue/views/queue-edit.html',
                     controller: 'QueueController'
+                })
+                .state('queueEdit', {
+                    url: '/queue/:id/edit',
+                    templateUrl: 'modules/queue/views/queue-edit.html',
+                    controller: 'QueueEditController'
                 });
         }
     ]);

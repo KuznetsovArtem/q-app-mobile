@@ -17,7 +17,7 @@ angular
                     var deferred = $q.defer();
                     console.log('check if user logged in');
                     UserModel.getUser(1).then(function(user) {
-                        deferred.resolve(user.token);
+                        deferred.resolve(user && user.token);
                     });
 
                     return deferred.promise;

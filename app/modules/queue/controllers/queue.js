@@ -8,6 +8,14 @@
 */
 angular
     .module('queue')
+    .controller('QueueEditController', [
+        '$scope',
+        'localizationService',
+        '$modal',
+        function ($scope, l, $modal) {
+
+        }
+    ])
     .controller('QueueController', [
         '$scope',
         'localizationService',
