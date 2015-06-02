@@ -13,13 +13,11 @@ angular
         '$modalInstance',
         'user',
         function($scope, $modalInstance, user) {
-
             $scope.user = user;
 
             $scope.ok = function () {
-                //userModel.save($scope.user);;
                 $modalInstance.close(
-                    angular.toJson($scope.user)
+                    $scope.user
                 );
             };
 
@@ -34,8 +32,10 @@ angular
         '$modal',
         '$log',
         'UserModel',
-        function($scope, localizationService, $modal, $log, UserModel) {
+        'auth',
+        function($scope, localizationService, $modal, $log, UserModel, auth) {
 
+            console.log('auth', auth);
             $scope.registerUser = function() {
                 var modalRegister = $modal.open({
                     animation: false,
@@ -43,35 +43,14 @@ angular
                     controller: 'RegisterController',
                     resolve : {
                         user : function() {
-                            return { // test data; TOTO: rm
-                                "phone": "911911911",
-                                "email": "test@domain.com",
-                                "login": "test",
-                                "password": "password",
-                                "firstname": "Test",
-                                "lastname": "Test1",
-                                "birthdate": "01/01/1976",
-                                "address": {
-                                    "cityid": 1,
-                                    "description": ""
-                                },
-                                "profile": {
-                                    "languageid": 1
-                                },
-                                "paytools": [
-                                    {
-                                        "paytoolid": "",
-                                        "pan": "",
-                                        "dateexp": ""
-                                    }
-                                ]
-                            }
+                            return UserModel.getUser();
                         }
                     }
                 });
 
                 modalRegister.result.then(function (data) {
                     UserModel.save(data).then(function(data) {
+                        //TODO: auto login
                         console.log('deferred user', data);
                     });
                 }, function () {
@@ -87,12 +66,7 @@ angular
                     animation: $scope.animationsEnabled,
                     templateUrl: 'modules/login/views/restore-pass.html',
                     controller: 'ModalInstanceCtrl',
-                    size: size/*,
-                    resolve: {
-                        items: function () {
-                            return $scope.items;
-                        }
-                    }*/
+                    size: size
                 });
 
                 modalInstance.result.then(function (selectedItem) {

@@ -1,13 +1,14 @@
 <div class="modal-header">
-    <h3 class="modal-title">{{L('user.register')}}</h3>
+    <h3 class="modal-title" ng-if="!user.id">{{L('user.register')}}</h3>
+    <h3 class="modal-title" ng-if="user.id">{{L('user.profile')}}</h3>
 </div>
 
 <!--// TODO: -->
     <!--if userId -> profile - save-->
     <!--if !userId -> register - add user-->
 
-<div class="modal-body restore-page">
-    <span class="modal-body_text">{{user.name}}</span>
+<div class="modal-body profile-page">
+
     <form class="form-horizontal login-form">
 
         <div class="form-group">
@@ -32,7 +33,7 @@
         
         <!--TODO-->
         <div class="form-group">
-            <label for="password2">{{L('user.password')}}</label>
+            <label for="password2">{{L('user.password2')}}</label>
             <input ng-model="user.password2" id="password2" class="form-control" type="text"/>
         </div>
         
@@ -46,8 +47,8 @@
             <input ng-model="user.lastname" id="lastname" class="form-control" type="text"/>
         </div>
 
-        <!--TODO: date of birth-->
-        <!--TODO: adress-->
+        <!--TODO: date of birth - user.birthDate -->
+        <!--TODO: address-->
 
         <div class="form-group">
             <label for="data">{{L('user.data')}}</label>

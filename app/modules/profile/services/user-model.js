@@ -10,36 +10,77 @@ angular
     .service('UserModel', [
         '$http',
         '$q',
-        function($http, $q) {
+        'localStorageService',
+        function($http, $q, Storage) {
 
             var host = 'http://gorelics.alfa-inet.net:9000',
                 customersUrl = '/api/customers';
-            return {
-                save : function(user) {
-                    var deferred = $q.defer();
-                    var promise = deferred.promise;
 
-                    //$http.defaults.useXDomain = true;
+            var userSchema = { // test data; TOTO: rm
+                "phone": "",
+                "email": "test@.com",
+                "login": "",
+                "password": "",
+                "firstname": "",
+                "lastname": "",
+                "birthdate": "",
+                "address": {
+                    "cityid": 1,
+                    "description": ""
+                },
+                "profile": {
+                    "languageid": 1
+                },
+                "paytools": [
+                    {
+                        "paytoolid": "",
+                        "pan": "",
+                        "dateexp": ""
+                    }
+                ]
+            };
+
+            return {
+                getUser: function(userId) {
+                    var deferred = $q.defer();
+
+                    if(userId) {
+//                        TODO: get from cache
+//                            TODO: api get
+                        var userModel = Storage.get('userModel');
+                        deferred.resolve(
+                            angular.fromJson(userModel)
+                        );
+                    } else {
+                        // default model
+                        deferred.resolve(userSchema);
+                    }
+
+                    return deferred.promise
+                },
+                save : function(user) {
+                    var userModel,
+                        deferred = $q.defer();
+
+                    // TODO: token & id in ajax success
+                    user.token = '123';
+                    user.id = 1;
+                    userModel = angular.toJson(user);
+
+                    Storage.set('userModel', userModel);
 
                     $http.post(host + customersUrl, user).
                         success(function(data, status, headers, config) {
-                            // this callback will be called asynchronously
-                            // when the response is available
                             console.log('http s', user, data, status, headers, config);
                             deferred.resolve(user);
                         }).
                         error(function(data, status, headers, config) {
-                            // called asynchronously if an error occurs
-                            // or server returns response with an error status.
                             console.log('http e', user, data);
-                            deferred.resolve(user, status, headers, config);
+                            deferred.resolve(user);
                             //deferred.dismiss(user);
                         });
-                    console.log('Saving user', user);
 
-                    deferred.resolve(user);
-
-                    return promise;
+                    return deferred.promise;
                 }
             }
         }

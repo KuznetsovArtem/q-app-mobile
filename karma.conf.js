@@ -28,6 +28,7 @@ module.exports = function(config) {
             'app/lib/angular-ui-router/release/angular-ui-router.js',
             'app/lib/angular-route/angular-route.js',
             'app/lib/ngCordova/dist/ng-cordova.js',
+            'app/lib/angular-local-storage/dist/angular-local-storage.js',
             <!-- endinjector -->
 
             'app/js/config.js',

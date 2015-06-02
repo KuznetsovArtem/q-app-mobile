@@ -37,4 +37,10 @@ angular
         //$httpProvider.defaults.withCredentials = true;
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    }]);
+    }])
+    .config(function (localStorageServiceProvider) {
+        localStorageServiceProvider
+            .setPrefix('qApp')
+            .setStorageType('sessionStorage')
+            .setNotify(true, true)
+    });

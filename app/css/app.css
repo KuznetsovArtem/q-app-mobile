@@ -129,39 +129,42 @@ body {
   box-shadow: 1px 2px 6px -3px #000000 inset;
   border-bottom: 1px solid #e1e1e1;
 }
-.profile-page {
+.settings-page {
   background-color: #cccccc;
   color: #959595;
   padding-top: 55px;
   min-height: 100%;
   margin: 0 0;
 }
-.profile-page .row {
+.settings-page .row {
   padding: 0 0;
 }
-.profile-page .profile-field {
+.settings-page .settings-field {
   margin-top: 10px;
   padding: 15px;
   padding-left: 50px;
   background-color: #e1e1e1;
 }
-.profile-page .profile-field.row {
+.settings-page .settings-field.row {
   margin-right: 0;
   margin-left: 0;
 }
-.profile-page .profile-field .first-col-fix {
+.settings-page .settings-field .first-col-fix {
   padding-left: 0;
 }
-.profile-page .profile-field a {
+.settings-page .settings-field a {
   display: block;
   color: #959595;
   text-decoration: none;
 }
-.profile-page .profile-field select {
+.settings-page .settings-field select {
   border: none;
   color: #3c6397;
   background-color: #e1e1e1;
   -webkit-box-shadow: none;
+}
+.profile-page label {
+  padding-left: 10px;
 }
 .sities-page input {
   border-radius: 0;

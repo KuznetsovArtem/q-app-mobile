@@ -12,7 +12,8 @@ angular
         '$scope',
         'localizationService',
         '$modal',
-        function($scope, localizationService, $modal) {
+        'UserModel',
+        function($scope, localizationService, $modal, UserModel) {
 
             $scope.languages = [{
                 name: 'English',
@@ -24,6 +25,27 @@ angular
                 name: 'English',
                 id: 1
             }];
+
+            $scope.showProfile = function() {
+                var modalProfile = $modal.open({
+                    animation: false,
+                    templateUrl: 'modules/profile/views/profile.html',
+                    controller: 'RegisterController',
+                    resolve : {
+                        user : function() {
+                            return UserModel.getUser(1);
+                        }
+                    }
+                });
+
+                modalProfile.result.then(function (data) {
+                    UserModel.save(data).then(function(data) {
+                        console.log('deferred user', data);
+                    });
+                }, function () {
+
+                });
+            };
 
             $scope.animationsEnabled = false; // TODO: move to config factory
 

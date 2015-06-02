@@ -15,6 +15,7 @@
     "angular-ui-utils": "latest",
     "angular-ui-router": "latest",
     "angular-route": "latest",
-    "ngCordova": "~0.1.15-alpha"
+    "ngCordova": "~0.1.15-alpha",
+    "angular-local-storage": "~0.2.2"
   }
 }

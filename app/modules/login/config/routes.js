@@ -25,7 +25,12 @@ angular
                 .state('login', {
                     url: '/login',
                     templateUrl: 'modules/login/views/login.html',
-                    controller: 'LoginController'
+                    controller: 'LoginController',
+                    resolve: {
+                        auth: ['AuthService', function (AuthService) {
+                            return AuthService.isLoggedIn();
+                        }]
+                    }
                 });
         }
     ]);

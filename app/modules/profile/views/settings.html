@@ -1,8 +1,8 @@
 <ng-include src="'modules/core/views/header.html'"></ng-include> <!--TODO:Directive-->
-<div class="profile-page container">
+<div class="settings-page container">
 
     <div class="row">
-        <div class="col-xs-12 profile-field row">
+        <div class="col-xs-12 settings-field row">
             <div class="col-xs-6 first-col-fix">{{L('profile.lang')}}</div>
             <div class="col-xs-6 text-right">
                 <select name="user-lang" id="user-lang">
@@ -11,7 +11,7 @@
             </div>
         </div>
 
-        <div class="col-xs-12 profile-field row" ng-click="showCities()">
+        <div class="col-xs-12 settings-field row" ng-click="showCities()">
             <div class="col-xs-6 first-col-fix">{{L('profile.city')}}</div>
             <div class="col-xs-6 text-right">
                 <select name="user-city" id="user-city">
@@ -22,11 +22,11 @@
             </div>
         </div>
 
-        <div class="col-xs-12 profile-field">{{L('profile.userData')}}</div>
-        <div class="col-xs-12 profile-field">
+        <div class="col-xs-12 settings-field" ng-click="showProfile()">{{L('profile.userData')}}</div>
+        <div class="col-xs-12 settings-field">
             <a href="mailto:murdoc.ak@gamil.com">{{L('profile.letterToDev')}}</a>
         </div>
-        <div class="col-xs-12 profile-field" ng-click="showAgreement()">{{L('profile.licenseAgreement')}}</div>
-        <div class="col-xs-12 profile-field" ng-click="showAgreement()">{{L('profile.about')}}</div>
+        <div class="col-xs-12 settings-field" ng-click="showAgreement()">{{L('profile.licenseAgreement')}}</div>
+        <div class="col-xs-12 settings-field" ng-click="showAgreement()">{{L('profile.about')}}</div>
     </div>
 </div>
