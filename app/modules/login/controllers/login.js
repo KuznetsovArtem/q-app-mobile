@@ -5,6 +5,12 @@
  * @name login.Controllers.LoginController
  * @description LoginController
  * @requires ng.$scope
+ *
+ * test user:
+ * 987666666
+ * test@qwe.com
+ * test54321 - l
+ * test54321 - p
 */
 angular
     .module('login')
@@ -37,11 +43,12 @@ angular
         function($scope, localizationService, $state, $modal, $log, UserModel, auth) {
 
             console.log('auth', auth);
+            var defState = 'settings';
 
             $scope.login = function() {
                 console.log('login');
-                if(auth || !auth) { // TODO: check auth
-                   $state.go('settings', {}, {reload: false});
+                if(auth) { // TODO: check auth
+                   $state.go(defState, {}, {reload: false});
                 }
             };
 
@@ -59,8 +66,10 @@ angular
 
                 modalRegister.result.then(function (data) {
                     UserModel.save(data).then(function(data) {
-                        //TODO: auto login
-                        console.log('deferred user', data);
+                        console.log('reg - ok .... \nLogin...', data);
+                        $state.go(defState, {}, {reload: false});
+                    }, function() {
+                        console.log('register - nononono')
                     });
                 }, function () {
                     $log.info('Modal dismissed at: ' + new Date());

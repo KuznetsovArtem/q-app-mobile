@@ -32,13 +32,18 @@ angular
                     "languageid": 1
                 },
                 "paytools": [
-                    {
-                        "paytoolid": "",
-                        "pan": "",
-                        "dateexp": ""
-                    }
+//                    {
+//                        "paytoolid": "",
+//                        "pan": "",
+//                        "dateexp": ""
+//                    }
                 ]
             };
+
+            function storageSave(user) {
+                Storage.set('userModel', angular.toJson(user));
+                return user;
+            }
 
             return {
                 getUser: function(userId) {
@@ -59,25 +64,17 @@ angular
                     return deferred.promise
                 },
                 save : function(user) {
-                    var userModel,
-                        deferred = $q.defer();
-
-                    // TODO: token & id in ajax success
-                    user.token = '123';
-                    user.id = 1;
-                    userModel = angular.toJson(user);
-
-                    Storage.set('userModel', userModel);
+                    var deferred = $q.defer();
 
                     $http.post(host + customersUrl, user).
-                        success(function(data, status, headers, config) {
-                            console.log('http s', user, data, status, headers, config);
-                            deferred.resolve(user);
+                        success(function(res, status, headers, config) {
+                            console.log('http success', res);
+                            deferred.resolve(storageSave(res.data));
                         }).
                         error(function(data, status, headers, config) {
-                            console.log('http e', user, data);
-                            deferred.resolve(user);
-                            //deferred.dismiss(user);
+                            console.log('http error', user, data);
+//                            deferred.resolve(user);
+                            deferred.dismiss(user);
                         });
 
                     return deferred.promise;
