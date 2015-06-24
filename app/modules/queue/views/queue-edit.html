@@ -2,38 +2,42 @@
 <div class="queue-page">
 
     <a href>[Back btn]</a>
-    <div>[Star rating - view]</div>
+    <div>[Star rating - view] - {{queue.rate}}</div>
 
     <form class="form-group">
         <div class="form-group queue-field">
             <label for="organization">{{L('queue.organization')}}</label>
-            <input id="organization" class="form-control" type="text"/>
+            <input id="organization" class="form-control" ng-disabled="editQueue"
+                   value="{{queue.organization}}" type="text"/>
         </div>
         <div class="form-group queue-field">
             <label for="service">{{L('queue.service')}}</label>
-            <input id="service" class="form-control" type="text"/>
+            <input id="service" class="form-control" ng-disabled="editQueue"
+                   value="{{queue.service}}" type="text"/>
         </div>
 
         <div class="form-group queue-field col-xs-6">
             <label for="date">{{L('queue.date')}}</label>
-            <input ng-click="getDate()" id="date" class="form-control" type="text"/>
+            <input ng-click="getDate()" id="date" ng-disabled="editQueue"
+                   value="{{queue.date}}" class="form-control" type="text"/>
         </div>
         <div class="form-group queue-field time col-xs-6">
             <label for="time">{{L('queue.time')}}</label>
-            <input ng-click="getTime()" id="time" class="form-control" type="text"/>
+            <input ng-click="getTime()" id="time" ng-disabled="editQueue"
+                   value="{{queue.time}}" class="form-control" type="text"/>
         </div>
 
         <div class="form-group queue-field">
             <label for="time-left">{{L('queue.timeLeft')}}</label>
-            <input id="time-left" class="form-control" type="text"/>
+            <input id="time-left" class="form-control" disabled value="1d 15h" type="text"/>
         </div>
     </form>
 
     <div class="queue-footer row">
-        <a href>[Check]</a>
-        <a href>[Edit]</a>
-        <a href>[Rate]</a>
-        <a href>[delete]</a>
+        <a href ng-click="fake()">[Check]</a>
+        <a href ng-click="editQueue = !editQueue">[Edit]</a>
+        <a href ng-click="fake()">[Rate]</a>
+        <a href ng-click="fake()">[delete]</a>
     </div>
 
 </div>

@@ -12,8 +12,29 @@ angular
         '$scope',
         'localizationService',
         '$modal',
-        function ($scope, l, $modal) {
+        '$filter',
+        '$stateParams',
+        'localStorageService',
+        function ($scope, l, $modal, $filter, $stateParams, Storage) {
+            var queues = angular.fromJson(Storage.get('queuesModel')); // TODO: model
+            $scope.queue = $filter('getById')(queues, $stateParams.id);
 
+            $scope.editQueue = true;
+
+            $scope.fake = function() {
+                $modal.open({
+                    animation: false,
+                    templateUrl: 'modules/queue/views/fake-modal.html',
+                    controller: function($scope, $modalInstance) {
+                        $scope.ok = function () {
+                            $modalInstance.close($scope.selectedTime);
+                        };
+                        $scope.cancel = function () {
+                            $modalInstance.dismiss('cancel');
+                        };
+                    }
+                });
+            }
         }
     ])
     .controller('QueueController', [
@@ -23,10 +44,11 @@ angular
         'timeList',
         function($scope, localizationService, $modal, timeList) {
 
+            $scope.date = '';
+            $scope.time = '';
 
-            console.log(timeList.get());
+
             $scope.animationsEnabled = false; // TODO: move to config factory
-
             $scope.getDate = function (size) {
 
                 var modalInstance = $modal.open({
@@ -35,7 +57,7 @@ angular
                     controller: function($scope, $modalInstance) {
 
                         $scope.ok = function () {
-                            $modalInstance.close('TODO:DATA');
+                            $modalInstance.close($scope.dt);
                         };
 
                         $scope.today = function() {
@@ -107,7 +129,9 @@ angular
                     size: size
                 });
 
-                modalInstance.result.then(function (apply) {}, function () {});
+                modalInstance.result.then(function (dt) {
+                    $scope.date = dt;
+                }, function () {});
             };
 
             $scope.getTime = function (size) {
@@ -122,7 +146,7 @@ angular
                             $scope.selectedTime = time + ':00'; // TODO
                         };
                         $scope.ok = function () {
-                            $modalInstance.close('TODO:DATA');
+                            $modalInstance.close($scope.selectedTime);
                         };
                         $scope.cancel = function () {
                             $modalInstance.dismiss('cancel');
@@ -132,9 +156,25 @@ angular
                     size: size
                 });
 
-                modalInstance.result.then(function (apply) {}, function () {});
+                modalInstance.result.then(function (selectedTime) {
+                    $scope.time = selectedTime;
+                }, function () {});
             };
 
+            $scope.fake = function() {
+                var modalInstance = $modal.open({
+                    animation: false,
+                    templateUrl: 'modules/queue/views/fake-modal.html',
+                    controller: function($scope, $modalInstance) {
+                        $scope.ok = function () {
+                            $modalInstance.close($scope.selectedTime);
+                        };
+                        $scope.cancel = function () {
+                            $modalInstance.dismiss('cancel');
+                        };
+                    }
+                });
+            }
         }
     ])
     .service('timeList', [function() {

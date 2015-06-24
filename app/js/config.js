@@ -8,7 +8,7 @@ var ApplicationConfiguration = (function() {
         'ngResource',
         'ngCookies',
         'ngAnimate',
-        'ngTouch',
+        //'ngTouch',
         'ngSanitize',
         'LocalStorageModule',
         'ui.router',

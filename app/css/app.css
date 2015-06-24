@@ -2,14 +2,17 @@ html,
 body {
   height: 100%;
 }
-*:not(input):not(textarea) {
-  -webkit-user-select: none;
-  /* disable selection/Copy of UIWebView */
-  -webkit-touch-callout: none;
-  /* disable the IOS popup when long-press on a link */
-}
 #uiview {
   height: 100%;
+}
+.loading-layer {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  opacity: .7;
 }
 .ng-hide {
   display: none !important;
@@ -92,6 +95,11 @@ body {
 .login-page .login-btn:hover {
   text-decoration: none;
 }
+.restore-page.modal-header {
+  background-image: url("../img/ui/icon_refresh.png");
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
+}
 .header {
   position: fixed;
   top: 0;
@@ -144,10 +152,33 @@ body {
   padding: 15px;
   padding-left: 50px;
   background-color: #e1e1e1;
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
 }
 .settings-page .settings-field.row {
   margin-right: 0;
   margin-left: 0;
+}
+.settings-page .settings-field.language {
+  background-image: url("../img/ui/icon_language.png");
+}
+.settings-page .settings-field.about {
+  background-image: url("../img/ui/icon_about.png");
+}
+.settings-page .settings-field.profile {
+  background-image: url("../img/ui/icon_personal_data.png");
+}
+.settings-page .settings-field.mailto {
+  background-image: url("../img/ui/icon_message.png");
+}
+.settings-page .settings-field.license {
+  background-image: url("../img/ui/icon_agreement.png");
+}
+.settings-page .settings-field.city {
+  background-image: url("../img/ui/icon_location.png");
+}
+.settings-page .settings-field.city .text-right {
+  color: #3c6397;
 }
 .settings-page .settings-field .first-col-fix {
   padding-left: 0;
@@ -162,6 +193,11 @@ body {
   color: #3c6397;
   background-color: #e1e1e1;
   -webkit-box-shadow: none;
+}
+.profile-page.modal-header {
+  background-image: url("../img/ui/icon_personal_data.png");
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
 }
 .profile-page label {
   padding-left: 10px;
@@ -185,6 +221,13 @@ body {
   background-color: #e1e1e1;
   margin-top: 15px;
   padding: 15px;
+}
+.sities-page .city-item.selected {
+  font-weight: 600;
+}
+.agreement-page.modal-body {
+  overflow: scroll;
+  height: 300px;
 }
 .queue-page {
   padding-top: 55px;
@@ -311,9 +354,11 @@ body {
   height: 90px;
   padding: 0;
   margin: 0;
-  margin-left: -15px;
   margin-top: 15px;
   color: #3c6397;
+  background-image: url("../img/ui/icon_soon.png");
+  background-position: 10px 25px;
+  background-repeat: no-repeat;
 }
 .queue-list-page .item.finished {
   color: #c2c2c2;
@@ -323,7 +368,15 @@ body {
 }
 .queue-list-page .item .edit-link {
   background-color: #c2c2c2;
+  background-image: url("../img/ui/icon_more.png");
+  background-position: 25px 35px;
+  background-repeat: no-repeat;
   height: 100%;
+}
+.queue-list-page .item .edit-link a {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .modal-dialog .modal-content {
   border-radius: 0;
@@ -416,4 +469,49 @@ body {
 }
 .modal-dialog .modal-content .modal-footer .btn-apply-yellow:hover {
   text-decoration: none;
+}
+.modal-dialog input {
+  z-index: 1400;
+}
+#user-login {
+  background-image: url("../img/ui/icon_name.png");
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
+  background-image: url("../img/ui/icon_login.png");
+}
+#user-pwd {
+  background-image: url("../img/ui/icon_name.png");
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
+  background-image: url("../img/ui/icon_password.png");
+}
+#restore-pass {
+  background-image: url("../img/ui/icon_name.png");
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
+  background-image: url("../img/ui/icon_at.png");
+}
+#organization {
+  background-image: url("../img/ui/icon_name.png");
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
+  background-image: url("../img/ui/icon_company.png");
+}
+#service {
+  background-image: url("../img/ui/icon_name.png");
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
+  background-image: url("../img/ui/icon_services.png");
+}
+#date {
+  background-image: url("../img/ui/icon_name.png");
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
+  background-image: url("../img/ui/icon_calendar.png");
+}
+#time {
+  background-image: url("../img/ui/icon_name.png");
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
+  background-image: url("../img/ui/icon_time.png");
 }

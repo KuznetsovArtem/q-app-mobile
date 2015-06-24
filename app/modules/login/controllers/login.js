@@ -34,19 +34,52 @@ angular
     ])
     .controller('LoginController', [
         '$scope',
+        '$cordovaNetwork',
         'localizationService',
         '$state',
         '$modal',
         '$log',
         'UserModel',
         'auth',
-        function($scope, localizationService, $state, $modal, $log, UserModel, auth) {
+        'DataPopulate',
+        function($scope, $cordovaNetwork, localizationService, $state, $modal, $log, UserModel, auth, Populate) {
 
+            // No internet
+            document.addEventListener("deviceready", function () {
+                $scope.networkType = $cordovaNetwork.getNetwork();
+
+                if ($cordovaNetwork.isOnline()) {
+                    // TODO: set ok if UI
+                }
+                else if ($cordovaNetwork.isOffline()) {
+                    $modal.open({
+                        animation: false,
+                        templateUrl: 'modules/core/views/no-internet-modal.html',
+                        controller: function($scope, $modalInstance) {
+                            $scope.ok = function () {
+                                $modalInstance.close();
+                            };
+                        }
+                    });
+                }
+                else {
+                    //TODO : error;
+                    //$scope.errorMsg = 'Error getting isOffline / isOnline methods';
+                }
+            }, false);
+
+            // No device back button
+            document.addEventListener("backbutton", function(e) {
+                e.preventDefault();
+                //TODO: close modal;
+            } , false);
+
+            // TODO: rm population;
+            Populate.run();
             console.log('auth', auth);
             var defState = 'settings';
 
             $scope.login = function() {
-                console.log('login');
                 if(auth) { // TODO: check auth
                    $state.go(defState, {}, {reload: false});
                 }

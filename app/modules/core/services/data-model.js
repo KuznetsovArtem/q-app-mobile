@@ -2,12 +2,14 @@
 
 /**
  * @ngdoc service
- * @name profile.Services.UserModel
- * @description UserModel Service
+ * @name core.Services.DataModel
+ * @description DataModel Service
  */
+
+// TODO: make parent class for models
 angular
-    .module('profile')
-    .service('UserModel', [
+    .module('core')
+    .service('DataModel', [
         '$http',
         '$q',
         'localStorageService',
@@ -17,27 +19,6 @@ angular
                 customersUrl = '/api/customers';
 
             var userSchema = { // test data; TOTO: rm
-                "phone": "",
-                "email": "test@.com",
-                "login": "",
-                "password": "",
-                "firstname": "",
-                "lastname": "",
-                "birthdate": "",
-                "address": {
-                    "cityid": 1,
-                    "description": ""
-                },
-                "profile": {
-                    "languageid": 1
-                },
-                "paytools": [
-//                    {
-//                        "paytoolid": "",
-//                        "pan": "",
-//                        "dateexp": ""
-//                    }
-                ]
             };
 
             function storageSave(user) {
@@ -45,13 +26,15 @@ angular
                 return user;
             }
 
+            //def
+            this.a = 'default';
+            var self = this;
+
             return {
                 getUser: function(userId) {
                     var deferred = $q.defer();
 
                     if(userId) {
-//                        TODO: get from cache
-//                            TODO: api get
                         var userModel = Storage.get('userModel');
                         deferred.resolve(
                             angular.fromJson(userModel)
@@ -60,14 +43,12 @@ angular
                         // default model
                         deferred.resolve(userSchema);
                     }
-
                     return deferred.promise
                 },
                 save : function(user) {
                     var deferred = $q.defer();
 
-                    deferred.resolve(storageSave(user)); // TODO: rm, mocked test
-
+                    deferred.resolve(storageSave(res.data)); // TODO: rm, mocked test
                     return deferred.promise;
 
                     $http.post(host + customersUrl, user).

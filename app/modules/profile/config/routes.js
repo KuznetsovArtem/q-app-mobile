@@ -25,7 +25,7 @@ angular
                 .state('settings', {
                     url: '/settings',
                     templateUrl: 'modules/profile/views/settings.html',
-                    controller: 'ProfileController'
+                    controller: 'ProfileController',
                 });
         }
     ]);

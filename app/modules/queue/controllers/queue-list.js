@@ -10,8 +10,8 @@ angular
     .module('queue')
     .controller('QueueListController', [
         '$scope',
-        function($scope) {
-
-
+        'localStorageService',
+        function($scope, Storage) {
+            $scope.queues = angular.fromJson(Storage.get('queuesModel'));
         }
 ]);

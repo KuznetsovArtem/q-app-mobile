@@ -9,9 +9,12 @@
     height: 90px;
     padding: 0;
     margin: 0;
-    margin-left: -15px;
+    //margin-left: -15px;
     margin-top: 15px;
     color: @brand-blue;
+    background-image: url("../img/ui/icon_soon.png");
+    background-position: 10px 25px;
+    background-repeat: no-repeat;
     &.finished {
       color: @brand-gray-3;
     }
@@ -21,7 +24,15 @@
     }
     .edit-link {
       background-color: @brand-gray-3;
+      background-image: url("../img/ui/icon_more.png");
+      background-position: 25px 35px;
+      background-repeat: no-repeat;
       height: 100%;
+      a {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
     }
   }
 }

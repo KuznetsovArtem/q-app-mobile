@@ -8,6 +8,7 @@ angular
             $get: ['$rootScope', function($rootScope) {
                 var data = {
                     'app.done'  : 'ГОТОВО',
+                    'app.noConnection'            : 'Нет соединения',
                     'login.loginButton'           : 'ВОЙТИ',
                     'login.login'                 : 'Логин',
                     'login.password'              : 'Пароль',
@@ -41,6 +42,7 @@ angular
                     'queue.date'                    : 'Дата',
                     'queue.time'                    : 'Время',
                     'queue.registeringCost'         : 'стоимость регистрации',
+                    'queue.free'                    : 'Бесплатно',
                     'queue.canselBtn'               : 'ОТМЕНА',
                     'queue.signupBtn'               : 'РЕГИСТРАЦИЯ'
                 };

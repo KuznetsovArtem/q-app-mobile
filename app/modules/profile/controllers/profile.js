@@ -10,22 +10,63 @@ angular
     .module('profile')
     .controller('ProfileController', [
         '$scope',
+        '$filter',
         'localizationService',
         '$modal',
         'UserModel',
-        function($scope, localizationService, $modal, UserModel) {
+        function($scope, $filter, localizationService, $modal, UserModel) {
 
             $scope.languages = [{
-                name: 'English',
+                name: 'Ukrainian',
                 id: 1
             },{
-                name: 'English',
-                id: 1
+                name: 'Russian',
+                id: 2
             },{
                 name: 'English',
-                id: 1
+                id: 3
             }];
 
+            var CitiesModel = [{ // TODO: move to model
+                name: 'Kiev',
+                id : 1
+            },{
+                name: 'Kharkiv',
+                id : 2
+            },{
+                name: 'Dnipropetrovsk',
+                id : 3
+            },{
+                name: 'Odessa',
+                id : 4
+            },{
+                name: 'Zaporizhia',
+                id : 5
+            },{
+                name: 'Lviv',
+                id : 6
+            },{
+                name: 'Kryvyi Rih',
+                id : 7
+            },{
+                name: 'Mykolaiv',
+                id : 8
+            },{
+                name: 'Mariupol',
+                id : 9
+            }];
+
+            // tpl vars
+            var user;
+            UserModel.getUser(1).then(function(userData) {
+                $scope.user = user = userData;
+                $scope.userCity = $filter('getById')(CitiesModel, userData.address.cityid).name;
+                console.log(userData);
+            });
+
+
+
+            // Settings modals
             $scope.showProfile = function() {
                 var modalProfile = $modal.open({
                     animation: false,
@@ -72,36 +113,8 @@ angular
                         }
                     },
                     controller: function($scope, $modalInstance, user) {
-                        // TODO: $get api -> Storage -> get
-                        $scope.cities = [{
-                            name: 'Kiev',
-                            id : 1
-                        },{
-                            name: 'Kharkiv',
-                            id : 2
-                        },{
-                            name: 'Dnipropetrovsk',
-                            id : 3
-                        },{
-                            name: 'Odessa',
-                            id : 4
-                        },{
-                            name: 'Zaporizhia',
-                            id : 1
-                        },{
-                            name: 'Lviv',
-                            id : 1
-                        },{
-                            name: 'Kryvyi Rih',
-                            id : 1
-                        },{
-                            name: 'Mykolaiv',
-                            id : 1
-                        },{
-                            name: 'Mariupol',
-                            id : 1
-                        }];
 
+                        $scope.cities = CitiesModel;
                         $scope.selectedCity = user.address.cityid;
 
                         $scope.selectCity = function(id) {
@@ -117,9 +130,23 @@ angular
 
                 modalInstance.result.then(function (cityId) {
                     // TODO: update user model -> save;
+                    user.address.cityid = cityId;
+                    UserModel.save(user);
+                    $scope.userCity = $filter('getById')(CitiesModel, $scope.user.address.cityid).name;
                 }, function () {});
             };
 
         }
-    ]);
+    ])
+    .filter('getById', function() {
+        return function(input, id) {
+            var i=0, len=input.length;
+            for (; i<len; i++) {
+                if (+input[i].id == +id) {
+                    return input[i];
+                }
+            }
+            return null;
+        }
+    });
 

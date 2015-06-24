@@ -26,33 +26,7 @@
 
   <body>
     <div id="uiview" ui-view></div>
-    <!--<div class="header-placeholder"></div>-->
-    <!--<div role="main">-->
-        <!--<section class="bs-header text-center" id="overview">-->
-            <!--<div class="container">-->
-                <!--<h1 id="app-heading">-->
-                    <!--The App-->
-                <!--</h1>-->
-            <!--</div>-->
-        <!--</section>-->
-
-        <!--<div class="container">-->
-            <!--<div class="row">-->
-                <!--<div class="col-md-12">-->
-                    <!--<div id="uiview" ui-view></div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!-- /.container -->
-    <!--</div>-->
-    <!-- /.main -->
-
-    <!--<footer class="footer">-->
-        <!--<div class="container">-->
-            <!--<p>Code licensed under <a href="https://github.com/keshavos/generator-angularjs-cordova/">MIT License</a>.</p>-->
-        <!--</div>-->
-    <!--</footer>-->
-
+    <loading-layer></loading-layer>
     <!-- build:js scripts/vendor.js -->
         <!-- injector:bowerjs -->
         <script src="lib/jquery/dist/jquery.js"></script>
@@ -87,12 +61,16 @@
         <script src="modules/mail/config/routes.js"></script>
         <script src="modules/profile/config/routes.js"></script>
         <script src="modules/queue/config/routes.js"></script>
+        <script src="modules/core/services/data-model.js"></script>
+        <script src="modules/core/services/data-populate.js"></script>
         <script src="modules/core/services/localization.js"></script>
         <script src="modules/login/services/auth-service.js"></script>
         <script src="modules/mail/services/mailModel.js"></script>
         <script src="modules/profile/services/user-model.js"></script>
         <script src="modules/queue/services/queue-model.js"></script>
+        <script src="modules/core/directives/loading-layer.js"></script>
         <script src="modules/core/directives/pop-up.js"></script>
+        <script src="modules/login/directives/footer-btn.js"></script>
         <script src="modules/core/controllers/home.js"></script>
         <script src="modules/core/controllers/pop-up.js"></script>
         <script src="modules/login/controllers/login.js"></script>

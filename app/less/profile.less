@@ -18,6 +18,29 @@
     padding: 15px;
     padding-left: 50px;
     background-color: @brand-gray-1;
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    &.language{
+      background-image: url("../img/ui/icon_language.png");
+    }
+    &.about{
+      background-image: url("../img/ui/icon_about.png");
+    }
+    &.profile{
+      background-image: url("../img/ui/icon_personal_data.png");
+    }
+    &.mailto{
+      background-image: url("../img/ui/icon_message.png");
+    }
+    &.license{
+      background-image: url("../img/ui/icon_agreement.png");
+    }
+    &.city {
+      background-image: url("../img/ui/icon_location.png");
+      .text-right {
+        color: @brand-blue;
+      }
+    }
 
     .first-col-fix {
       padding-left: 0;
@@ -40,6 +63,11 @@
 
 // ===================================================================================================================== Profile page
 .profile-page {
+  &.modal-header {
+    background-image: url("../img/ui/icon_personal_data.png");
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+  }
   label {
     padding-left: 10px;
   }
@@ -54,5 +82,18 @@
     background-color: @brand-gray-1;
     margin-top: 15px;
     padding: 15px;
+    &.selected {
+      font-weight: 600;
+      //color: black;
+    }
+  }
+}
+
+
+// ===================================================================================================================== Agreement page
+.agreement-page {
+  &.modal-body {
+    overflow: scroll;
+    height: 300px;
   }
 }

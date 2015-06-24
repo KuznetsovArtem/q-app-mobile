@@ -2,7 +2,7 @@
 <div class="settings-page container">
 
     <div class="row">
-        <div class="col-xs-12 settings-field row">
+        <div class="col-xs-12 settings-field row language">
             <div class="col-xs-6 first-col-fix">{{L('profile.lang')}}</div>
             <div class="col-xs-6 text-right">
                 <select name="user-lang" id="user-lang">
@@ -11,18 +11,18 @@
             </div>
         </div>
 
-        <div class="col-xs-12 settings-field row" ng-click="showCities()">
+        <div class="col-xs-12 settings-field city row" ng-click="showCities()">
             <div class="col-xs-6 first-col-fix">{{L('profile.city')}}</div>
             <div class="col-xs-6 text-right">
-                Kharkiv <!--TODO: user.address.cityid;-->
+                {{userCity}}
             </div>
         </div>
 
-        <div class="col-xs-12 settings-field" ng-click="showProfile()">{{L('profile.userData')}}</div>
-        <div class="col-xs-12 settings-field">
+        <div class="col-xs-12 settings-field profile" ng-click="showProfile()">{{L('profile.userData')}}</div>
+        <div class="col-xs-12 settings-field mailto">
             <a href="mailto:murdoc.ak@gamil.com">{{L('profile.letterToDev')}}</a>
         </div>
-        <div class="col-xs-12 settings-field" ng-click="showAgreement()">{{L('profile.licenseAgreement')}}</div>
-        <div class="col-xs-12 settings-field" ng-click="showAgreement()">{{L('profile.about')}}</div>
+        <div class="col-xs-12 settings-field license" ng-click="showAgreement()">{{L('profile.licenseAgreement')}}</div>
+        <div class="col-xs-12 settings-field about" ng-click="showAgreement()">{{L('profile.about')}}</div>
     </div>
 </div>

@@ -9,7 +9,8 @@
     </form>
 
     <div class="row">
-        <div ng-repeat="city in cities | filter : {name: cityFilter}" class="col-xs-12 city-item" ng-click="selectCity(city.id)">{{city.name}}</div>
+        <div ng-repeat="city in cities | filter : {name: cityFilter}" class="col-xs-12 city-item"
+             ng-class="{selected : selectedCity === city.id}" ng-click="selectCity(city.id)">{{city.name}}</div>
     </div>
 </div>
 <div class="modal-footer">

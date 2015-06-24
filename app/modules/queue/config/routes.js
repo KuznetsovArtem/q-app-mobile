@@ -35,7 +35,7 @@ angular
                 .state('queueView', {
                     url: '/queue/:id',
                     templateUrl: 'modules/queue/views/queue-edit.html',
-                    controller: 'QueueController'
+                    controller: 'QueueEditController'
                 })
                 .state('queueEdit', {
                     url: '/queue/:id/edit',
