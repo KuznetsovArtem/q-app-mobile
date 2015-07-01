@@ -14,7 +14,9 @@ angular
         'localStorageService',
         'UserModel',
         'QueueModel',
-        function($http, $q, $log, Storage, User, Queue) {
+        'OrganizationsModel',
+        'ServicesModel',
+        function($http, $q, $log, Storage, User, Queue, Orgs, Services) {
             var userSchema = {
                 "phone": "1231212",
                 "email": "test@test.com",
@@ -43,54 +45,82 @@ angular
 
             var queuesSchema = [{
                 id: 1,
-                organization: 'TestOrganization_1',
-                service : 'TestService_1',
-                date: '12/08/2015',
+                organization: {
+                    name: "Организация 1",
+                    id: 1
+                },
+                service : {
+                    name: "Услуга 3",
+                    id: 3
+                },
+                date: '2015-07-18',
                 time: '13-00',
-                rate: 3
-            },{
-                id: 2,
-                organization: 'TestOrganization_2',
-                service : 'TestService_2',
-                date: '12/09/2015',
-                time: '14-00',
-                rate: 4
-            },{
-                id: 3,
-                organization: 'TestOrganization_3',
-                service : 'TestService_3',
-                date: '12/08/2015',
-                time: '13-00',
-                rate: 3
-            },{
-                id: 4,
-                organization: 'TestOrganization_4',
-                service : 'TestService_4',
-                date: '12/08/2015',
-                time: '13-00',
-                rate: 3
+                rate: 3,
+                isArchive : false
             },{
                 id: 5,
-                organization: 'TestOrganization_5',
-                service : 'TestService_5',
-                date: '12/08/2015',
+                organization: {
+                    name: "Организация 1",
+                    id: 1
+                },
+                service : {
+                    name: "Услуга 3",
+                    id: 3
+                },
+                date: '2015-07-24',
                 time: '13-00',
-                rate: 3
+                rate: 3,
+                isArchive : false
+            },{
+                id: 6,
+                organization: {
+                    name: "Организация 1",
+                    id: 1
+                },
+                service : {
+                    name: "Услуга 3",
+                    id: 3
+                },
+                date: '2015-06-22',
+                time: '13-00',
+                rate: 5,
+                isArchive : true
             }];
 
-            function storageSave(modelName, modelData) {
-                Storage.set(modelName, angular.toJson(modelData));
-                return modelData;
-            }
+            var organizationsSchema = [{
+                id : 1,
+                name : "Организация 1"
+            },{
+                id : 2,
+                name : "Организация 2"
+            },{
+                id : 3,
+                name : "Организация 3"
+            },{
+                id : 4,
+                name : "Организация 4"
+            }];
+
+            var servicesSchema = [{
+                id : 1,
+                name: 'Услуга 1'
+            },{
+                id : 2,
+                name: 'Услуга 2'
+            },{
+                id : 3,
+                name: 'Услуга 3'
+            },{
+                id : 4,
+                name: 'Услуга 4'
+            }];
 
             return {
                 run : function() {
-                    $log.log('running populating models...')
                     User.save(userSchema);
-                    Queue.save(queuesSchema);
-                    $log.log('...done.');
-                    //storageSave('userModel', userSchema);
-                    //storageSave('queuesModel', queuesSchema);
+                    Queue.saveAll(queuesSchema);
+                    Orgs.save(organizationsSchema);
+                    Services.save(servicesSchema);
                 }
             }
         }

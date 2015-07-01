@@ -12,49 +12,54 @@
     <form class="form-horizontal login-form">
 
         <div class="form-group">
-            <label for="phone">{{L('user.phone')}}</label>
-            <input ng-model="user.phone" id="phone" class="form-control" type="text"/>
-        </div>
-        
-        <div class="form-group">
-            <label for="email">{{L('user.email')}}</label>
-            <input ng-model="user.email" id="email" class="form-control" type="text"/>
-        </div> 
-        
-        <div class="form-group">
-            <label for="login">{{L('user.login')}}</label>
-            <input ng-model="user.login" id="login" class="form-control" type="text"/>
-        </div>
-                
-        <div class="form-group">
-            <label for="password">{{L('user.password')}}</label>
-            <input ng-model="user.password" id="password" class="form-control" type="text"/>
-        </div>           
-        
-        <!--TODO-->
-        <div class="form-group">
-            <label for="password2">{{L('user.password2')}}</label>
-            <input ng-model="user.password2" id="password2" class="form-control" type="text"/>
-        </div>
-        
-        <div class="form-group">
             <label for="firstname">{{L('user.firstname')}}</label>
             <input ng-model="user.firstname" id="firstname" class="form-control" type="text"/>
-        </div>  
-        
+        </div>
+
         <div class="form-group">
             <label for="lastname">{{L('user.lastname')}}</label>
             <input ng-model="user.lastname" id="lastname" class="form-control" type="text"/>
         </div>
 
+        <div class="form-group">
+            <label for="phone">{{L('user.phone')}}</label>
+            <input ng-model="user.phone" ng-disabled="profilePage" id="phone" class="form-control" type="text"/>
+        </div>
+
+        <div class="form-group">
+            <label for="email">{{L('user.email')}}</label>
+            <input ng-model="user.email" id="email" class="form-control" type="text"/>
+        </div> 
+        
+        <!--<div class="form-group">-->
+            <!--<label for="login">{{L('user.login')}}</label>-->
+            <!--<input ng-model="user.login" id="login" class="form-control" type="text"/>-->
+        <!--</div>-->
+                
+        <div class="form-group" ng-if="registerPage">
+            <label for="password">{{L('user.password')}}</label>
+            <input ng-model="user.password" id="password" class="form-control" type="text"/>
+        </div>           
+        
+        <!--TODO-->
+        <div class="form-group" ng-if="registerPage">
+            <label for="password2">{{L('user.password2')}}</label>
+            <input ng-model="user.password2" id="password2" class="form-control" type="text"/>
+        </div>
+
         <!--TODO: date of birth - user.birthDate -->
         <!--TODO: address-->
 
-        <div class="form-group">
-            <label for="data">{{L('user.data')}}</label>
-            <input ng-model="user.data" id="data" class="form-control" type="text"/>
+            <!--<label for="data">{{L('user.data')}}</label>-->
+            <!--<input ng-model="user.data" id="data" class="form-control" type="text"/>-->
+        <div class="form-group" ng-if="profilePage">
+            <label for="">{{L('user.card')}}</label>
+            <div ng-show="haveCard" ng-click="editCard()" class="col-xs-12 settings-field card">
+                {{user.paytools[0].paytoolid | cardNumber}} <br/>
+                {{user.paytools[0].dateexp}}
+            </div>
+            <div ng-show="!haveCard" ng-click="editCard()" class="col-xs-12 settings-field add-card">{{L('user.card.add')}}</div>
         </div>
-        
         
         
     </form>

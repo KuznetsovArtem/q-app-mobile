@@ -7,17 +7,19 @@
         <div class="col-xs-6 content" ng-click="registerUser()">{{L('login.signUp')}}</div>
     </div>
 
-    <form class="form-horizontal login-form">
+    <form name="loginForm" class="form-horizontal login-form">
         <div class="form-group">
             <label for="user-login" class="col-xs-3 control-label">{{L('login.login')}}</label>
             <div class="col-xs-9">
-                <input type="text" class="form-control input-lg" id="user-login" placeholder="Enter email">
+                <input type="text" class="form-control input-lg" id="user-login" ng-model="userLogin"
+                       required minlength="10" maxlength="10" placeholder="{{L('login.loginHolder')}}">
             </div>
         </div>
         <div class="form-group">
             <label for="user-pwd" class="col-xs-3 control-label">{{L('login.password')}}</label>
             <div class="col-xs-9">
-                <input type="password" class="form-control input-lg" id="user-pwd" placeholder="Password">
+                <input type="password" class="form-control input-lg" id="user-pwd" ng-model="userPass"
+                       required minlength="3" placeholder="{{L('login.passwordHolder')}}">
             </div>
         </div>
     </form>
@@ -28,5 +30,5 @@
         </div>
     </div>
     <!--<a href="#!/settings" class="login-btn">{{L('login.loginButton')}}</a>-->
-    <a href class="login-btn" footer-btn ng-click="login()">{{L('login.loginButton')}}</a>
+    <a href class="login-btn" footer-btn ng-click="isValid()&&login()">{{L('login.loginButton')}}</a>
 </div>

@@ -2,10 +2,10 @@
     <h3 class="modal-title">{{L('login.restorePwd')}}</h3>
 </div>-->
 <div class="modal-body time-page">
-    <div class="time-hero text-center">{{selectedTime}}</div>
+    <div class="time-hero text-center">{{showTime}}</div>
     <div class="row">
         <div ng-repeat="hour in timeList" class="col-xs-6">
-            <div class="time-item" ng-click="setTime(hour)">{{hour}}:00</div>
+            <div class="time-item" ng-class="{'selected' : selectedTime === hour}" ng-click="setTime(hour)">{{hour}}:00</div>
         </div>
     </div>
 </div>

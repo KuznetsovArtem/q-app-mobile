@@ -25,7 +25,12 @@ angular
                 .state('settings', {
                     url: '/settings',
                     templateUrl: 'modules/profile/views/settings.html',
-                    controller: 'ProfileController',
+                    resolve: {
+                        user: ['UserModel', function (UserModel) {
+                            return UserModel.getUser(1);
+                        }]
+                    },
+                    controller: 'SettingsController',
                 });
         }
     ]);

@@ -4,20 +4,25 @@
     <form class="form-group">
         <div class="form-group queue-field">
             <label for="organization">{{L('queue.organization')}}</label>
-            <input id="organization" class="form-control" type="text"/>
+            <!--<div id="organization" class="form-control"></div>-->
+            <!--<input id="organization" class="form-control" value="{{organization.name}}" type="text" ng-click="getOrganization()"/>-->
+            <div id="organization" class="item" type="text" ng-click="getOrganization()">{{organization.name}}</div>
         </div>
         <div class="form-group queue-field">
             <label for="service">{{L('queue.service')}}</label>
-            <input id="service" class="form-control" type="text"/>
+            <!--<input id="service" class="form-control" value="{{service.name}}" type="text" ng-disabled="!organization.id" ng-click="getService()"/>-->
+            <div id="service" class="item" type="text" ng-click="organization.id&&getService()">{{service.name}}</div>
         </div>
 
         <div class="form-group queue-field col-xs-6">
             <label for="date">{{L('queue.date')}}</label>
-            <input ng-click="getDate()" id="date" value="{{date | date:'dd/MMMM/yyyy'}}" class="form-control" type="text"/>
+            <!--<input ng-click="getDate()" id="date" value="{{date | date:'dd/MMMM/yyyy'}}" ng-disabled="!service.id" class="form-control" type="text"/>-->
+            <div ng-click="service.id&&getDate()" id="date" class="item" type="text">{{date | date:'dd.MM.yyyy'}}</div>
         </div>
         <div class="form-group queue-field time col-xs-6">
             <label for="time">{{L('queue.time')}}</label>
-            <input ng-click="getTime()" id="time" value="{{time}}" class="form-control" type="text"/>
+            <!--<input ng-click="getTime()" id="time" value="{{time}}" class="form-control" ng-disabled="!date" type="text"/>-->
+            <div ng-click="date&&getTime()" id="time" class="item" type="text">{{time}}</div>
         </div>
     </form>
 
@@ -27,14 +32,14 @@
             <div class="price-block-title">{{L('queue.registeringCost')}}</div>
         </div>
         <div class="col-xs-12 price-block">
-            <div class="price-block-title">{{L('queue.free')}}</div>
+            <div class="price-block-title free">{{L('queue.free')}}</div>
         </div>
 
     </div>
 
-    <div class="queue-footer footer-btn row">
-        <div class="cansel-btn col-xs-6">{{L('queue.canselBtn')}}</div>
-        <div ng-click="fake()" class="reg-btn col-xs-6">{{L('queue.signupBtn')}}</div>
+    <div class="queue-footer row" >
+        <div ng-click="clear()" class="cansel-btn col-xs-6">{{L('queue.canselBtn')}}</div>
+        <div ng-click="time&&addQueue()" ng-class="{'reg-btn' : time, 'cansel-btn': !time}" class="reg-btn col-xs-6">{{L('queue.signupBtn')}}</div>
     </div>
 
 </div>

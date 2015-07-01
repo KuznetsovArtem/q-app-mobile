@@ -206,6 +206,7 @@ module.exports = function(grunt) {
                     'app/index.html': [
                         'app/js/config.js',
                         'app/js/application.js',
+                        'app/js/local/*.js',
                         'app/modules/*/*.js',
                         'app/modules/*/config/*.js',
                         'app/modules/*/services/*.js',

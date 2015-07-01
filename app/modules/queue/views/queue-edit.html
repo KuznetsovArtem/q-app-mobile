@@ -1,43 +1,53 @@
 <ng-include src="'modules/core/views/header.html'"></ng-include> <!--TODO:Directive-->
 <div class="queue-page">
 
-    <a href>[Back btn]</a>
-    <div>[Star rating - view] - {{queue.rate}}</div>
+    <!--<a href>[Back btn]</a>-->
+    <!--<div>[Star rating - view] - {{queue.rate}}</div>-->
+
+    <div ng-if="queue.isArchive" class="row rate-block">
+        <div class="stars">
+            <div ng-repeat="star in [1,2,3,4,5]" class="star" ng-class="{'active': $index + 1 <= queue.rate}"></div>
+        </div>
+    </div>
 
     <form class="form-group">
         <div class="form-group queue-field">
             <label for="organization">{{L('queue.organization')}}</label>
-            <input id="organization" class="form-control" ng-disabled="editQueue"
-                   value="{{queue.organization}}" type="text"/>
+            <!--<input id="organization" class="form-control" ng-disabled="editQueue"-->
+                   <!--ng-click="getOrganization()" value="{{queue.organization.name}}" type="text"/>-->
+            <div id="organization" class="item" ng-click="!editQueue&&getOrganization()">{{queue.organization.name}}</div>
         </div>
         <div class="form-group queue-field">
             <label for="service">{{L('queue.service')}}</label>
-            <input id="service" class="form-control" ng-disabled="editQueue"
-                   value="{{queue.service}}" type="text"/>
+            <!--<input id="service" class="form-control" ng-disabled="editQueue"-->
+                   <!--ng-click="getService()" value="{{queue.service.name}}" type="text"/>-->
+            <div id="service" class="item" ng-click="!editQueue&&getService()">{{queue.service.name}}</div>
         </div>
 
         <div class="form-group queue-field col-xs-6">
             <label for="date">{{L('queue.date')}}</label>
-            <input ng-click="getDate()" id="date" ng-disabled="editQueue"
-                   value="{{queue.date}}" class="form-control" type="text"/>
+            <!--<input ng-click="getDate()" id="date" ng-disabled="editQueue"-->
+                   <!--value="{{queue.date | date:'dd.MM.yyyy'}}" class="form-control" type="text"/>-->
+            <div id="date" class="item" ng-click="!editQueue&&getDate()">{{queue.date | date:'dd.MM.yyyy'}}</div>
         </div>
         <div class="form-group queue-field time col-xs-6">
             <label for="time">{{L('queue.time')}}</label>
-            <input ng-click="getTime()" id="time" ng-disabled="editQueue"
-                   value="{{queue.time}}" class="form-control" type="text"/>
+            <!--<input ng-click="getTime()" id="time" ng-disabled="editQueue"-->
+                   <!--value="{{queue.time}}" class="form-control" type="text"/>-->
+            <div id="time" class="item" ng-click="!editQueue&&getTime()">{{queue.time}}</div>
         </div>
 
-        <div class="form-group queue-field">
+        <div class="form-group queue-field" ng-if="!queue.isArchive">
             <label for="time-left">{{L('queue.timeLeft')}}</label>
-            <input id="time-left" class="form-control" disabled value="1d 15h" type="text"/>
+            <input id="time-left" class="form-control" disabled value="{{estimateTime | estimate}}" type="text"/>
         </div>
     </form>
 
-    <div class="queue-footer row">
-        <a href ng-click="fake()">[Check]</a>
-        <a href ng-click="editQueue = !editQueue">[Edit]</a>
-        <a href ng-click="fake()">[Rate]</a>
-        <a href ng-click="fake()">[delete]</a>
+    <div footer-btn class="queue-footer row">
+        <a class="col-xs-4 footer-btn check" href="#!/queue/list"></a>
+        <div ng-click="toggleEdit()" class="col-xs-4 footer-btn edit" ng-if="!queue.isArchive" ng-class="{'active' : !editQueue}"></div>
+        <a class="col-xs-4 footer-btn rate" ng-if="queue.isArchive" href ng-click="showRate()"></a>
+        <a class="col-xs-4 footer-btn delete" href ng-click="deleteModal()"></a>
     </div>
 
 </div>

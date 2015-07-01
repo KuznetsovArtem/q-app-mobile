@@ -24,3 +24,46 @@
 #time {
   .input-logo();background-image: url("../img/ui/icon_time.png");
 }
+#firstname {
+  .input-logo();background-image: url("../img/ui/icon_name.png");
+}
+#lastname {
+  .input-logo();background-image: url("../img/ui/icon_surname.png");
+}
+#phone {
+  .input-logo();background-image: url("../img/ui/icon_phone.png");
+}
+#email {
+  .input-logo();background-image: url("../img/ui/icon_at.png");
+}
+#card-number {
+  .input-logo();background-image: url("../img/ui/icon_card_number.png");
+}
+#card-exp {
+  .input-logo();background-image: url("../img/ui/icon_term_card.png");
+}
+#card-cvv {
+  .input-logo();background-image: url("../img/ui/icon_CVV_card.png");
+}
+#password {
+  .input-logo();background-image: url("../img/ui/icon_password.png");
+}
+#password2 {
+  .input-logo();background-image: url("../img/ui/icon_password.png");
+}
+#time-left {
+  .input-logo();background-image: url("../img/ui/icon_time_left.png");
+}
+
+// validation
+form {
+  &.ng-invalid {
+    border: none !important;
+  }
+  .ng-invalid {
+    border: inherit !important;
+    &.ng-touched {
+      border: 1px solid #ed1c24 !important;
+    }
+  }
+}

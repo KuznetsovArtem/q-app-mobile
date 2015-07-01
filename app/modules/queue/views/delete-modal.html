@@ -1,13 +1,10 @@
 <div class="modal-header rate-page">
-    <h3 class="modal-title">{{L('queue.rateHeader')}}</h3>
+    <h3 class="modal-title">{{L('queue.delete')}}</h3>
 </div>
 <div class="modal-body rate-page">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="stars">
-                <div ng-repeat="star in [1,2,3,4,5]" class="star" ng-class="{'active': $index + 1 <= starRate}" ng-click="select($index + 1)"></div>
-            </div>
-        </div>
+    <div ng-click="ok()" class="row">
+        <div ng-click="cancel()" class="col-xs-6 text-center" style="color: white">Нет</div>
+        <div ng-click="ok()" class="col-xs-6 text-center" style="color: white">Да</div>
     </div>
     <!--<div ng-repeat="star in [1,2,3,4,5]" class="star" ng-click="select(star.$index)"></div>-->
     <!--<div ng-repeat="check in [1,2,3,4,5]" class="check"></div>-->

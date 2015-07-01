@@ -17,8 +17,10 @@
   }
   .logo {
     height: 50px;
-    background-image: url("../img/ui/ui.png");
-    background-position: 300px -3px;
+    background-color: @brand-blue;
+    background-image: url("../img/ui/logo_header.png");
+    background-position: 20px 5px;
+    background-repeat: no-repeat;
   }
   .nav-btn {
     background-color: @brand-blue;
@@ -30,12 +32,28 @@
     line-height: 50px;
     font-size: 30px;
     font-weight: 900;
+    background-position: center;
+    background-repeat: no-repeat;
     &.active {
       height: 55px;
       background-color: @brand-yellow;
       // TODO: move to mixin
       box-shadow: 1px 2px 6px -3px #000000 inset;
       border-bottom: 1px solid @brand-gray-1;
+    }
+    &.settings {
+      background-image: url("../img/ui/icon_settings.png");
+    }
+    &.list {
+      background-image: url("../img/ui/icon_current_turn.png");
+    }
+    &.add {
+      background-image: url("../img/ui/icon_registration.png");
+    }
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
     }
   }
 }

@@ -10,8 +10,14 @@ angular
     .module('queue')
     .controller('QueueListController', [
         '$scope',
+        '$filter',
         'localStorageService',
-        function($scope, Storage) {
+        function($scope, $filter, Storage) {
             $scope.queues = angular.fromJson(Storage.get('queuesModel'));
+
+            $scope.calcEstimate = function(eDate) {
+                var estimateTime = ~~((new Date(eDate) - new Date()) / (1000*60*60));
+                return $filter('estimate')(estimateTime);
+            };
         }
 ]);

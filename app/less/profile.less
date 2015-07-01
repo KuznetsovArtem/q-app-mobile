@@ -22,6 +22,9 @@
     background-repeat: no-repeat;
     &.language{
       background-image: url("../img/ui/icon_language.png");
+      .text-right {
+        color: @brand-blue;
+      }
     }
     &.about{
       background-image: url("../img/ui/icon_about.png");
@@ -71,29 +74,101 @@
   label {
     padding-left: 10px;
   }
+
+  .settings-field {
+    &.row {
+      margin-right: 0;
+      margin-left: 0;
+    }
+    //margin-top: 10px;
+    padding: 15px;
+    padding-left: 50px;
+    background-color: @brand-gray-1;
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+
+    &.card {
+      padding: 5px;
+      padding-left: 50px;
+      background-image: url("../img/ui/icon_card.png");
+      color: @brand-blue;
+    }
+    &.add-card {
+      background-color: @brand-yellow;
+      background-image: url("../img/ui/icon_card.png");
+      color: @brand-blue;
+    }
+  }
 }
 
 // ===================================================================================================================== Cities page
 .sities-page {
+  &.modal-header {
+    background-image: url("../img/ui/icon_location.png");
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+  }
   input {
     .input-fix();
   }
   .city-item {
-    background-color: @brand-gray-1;
     margin-top: 15px;
     padding: 15px;
+    background: @brand-gray-1 url("../img/ui/icon_checkbox_no.png") no-repeat 90% center;
     &.selected {
+      background-image: url("../img/ui/icon_checkbox_yes.png");
       font-weight: 600;
       //color: black;
     }
   }
 }
 
-
 // ===================================================================================================================== Agreement page
 .agreement-page {
+  &.modal-header {
+    background-image: url("../img/ui/icon_agreement.png");
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+  }
   &.modal-body {
     overflow: scroll;
     height: 300px;
+  }
+}
+
+// ===================================================================================================================== About page
+.about-page {
+  &.modal-header {
+    background-image: url("../img/ui/icon_agreement.png");
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+  }
+  &.modal-body {
+    //background-image: url("../img/ui/logo_white_250.png");
+    //background-position: center;
+    //background-repeat: no-repeat;
+    overflow: auto;
+    background-color: @brand-blue !important;
+    height: 300px;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+// ===================================================================================================================== Lang page
+.lang-page {
+  &.modal-header {
+    background-image: url("../img/ui/icon_language.png");
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+  }
+}
+// ===================================================================================================================== Card page
+.card-page {
+  &.modal-header {
+    background-image: url("../img/ui/icon_card.png");
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
   }
 }

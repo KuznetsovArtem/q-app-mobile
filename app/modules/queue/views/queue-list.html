@@ -2,12 +2,12 @@
 
 <div class="queue-list-page">
     <div class="row">
-        <div ng-repeat="queue in queues" class="col-xs-12 row item">
+        <div ng-repeat="queue in queues | orderBy : ['isArchive','date']" ng-show="!queue.isDelete" class="col-xs-12 row item" ng-class="{'finished' : queue.isArchive}">
             <div class="col-xs-10 content-block">
-                {{queue.organization}} <br/>
-                {{queue.service}} <br/>
-                {{queue.date}} {{queue.time}} <br/>
-                Estimate 13d 18h
+                {{queue.organization.name}} <br/>
+                {{queue.service.name}} <br/>
+                {{queue.date | date:'dd.MM.yyyy'}} {{queue.time}} <br/>
+                {{queue.isArchive ? '' : calcEstimate(queue.date)}}
             </div>
             <div class="col-xs-2 edit-link">
                 <a ng-href="#!/queue/{{queue.id}}">&nbsp;</a>

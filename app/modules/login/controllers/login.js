@@ -21,6 +21,8 @@ angular
         function($scope, $modalInstance, user) {
             $scope.user = user;
 
+            $scope.registerPage = true;
+
             $scope.ok = function () {
                 $modalInstance.close(
                     $scope.user
@@ -42,7 +44,8 @@ angular
         'UserModel',
         'auth',
         'DataPopulate',
-        function($scope, $cordovaNetwork, localizationService, $state, $modal, $log, UserModel, auth, Populate) {
+        '$modalStack',
+        function($scope, $cordovaNetwork, localizationService, $state, $modal, $log, UserModel, auth, Populate, $modalStack) {
 
             // No internet
             document.addEventListener("deviceready", function () {
@@ -70,19 +73,22 @@ angular
 
             // No device back button
             document.addEventListener("backbutton", function(e) {
+                $modalStack.dismissAll();
                 e.preventDefault();
-                //TODO: close modal;
             } , false);
 
-            // TODO: rm population;
-            Populate.run();
-            console.log('auth', auth);
             var defState = 'settings';
 
+            $scope.isValid = function() {
+                return $scope.loginForm.$valid
+            };
+
             $scope.login = function() {
-                if(auth) { // TODO: check auth
+                Populate.run();
+                //if(auth) { // TODO: check auth
+                    // TODO: rm population;
                    $state.go(defState, {}, {reload: false});
-                }
+                //}
             };
 
             $scope.registerUser = function() {
@@ -99,10 +105,9 @@ angular
 
                 modalRegister.result.then(function (data) {
                     UserModel.save(data).then(function(data) {
-                        console.log('reg - ok .... \nLogin...', data);
                         $state.go(defState, {}, {reload: false});
                     }, function() {
-                        console.log('register - nononono')
+                        console.log('error');
                     });
                 }, function () {
                     $log.info('Modal dismissed at: ' + new Date());
@@ -131,11 +136,11 @@ angular
     ])
     .controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
         $scope.ok = function () {
-            $modalInstance.close('TODO:DATA');
+            $modalInstance.close(true);
         };
 
         $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
+            $modalInstance.dismiss('user cancel');
         };
     })
     ;

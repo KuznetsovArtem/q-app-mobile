@@ -2,12 +2,10 @@
 <div class="settings-page container">
 
     <div class="row">
-        <div class="col-xs-12 settings-field row language">
+        <div class="col-xs-12 settings-field row language" ng-click="showLangs()">
             <div class="col-xs-6 first-col-fix">{{L('profile.lang')}}</div>
             <div class="col-xs-6 text-right">
-                <select name="user-lang" id="user-lang">
-                    <option ng-repeat="lang in languages" value="{{lang.id}}">{{lang.name}}</option>
-                </select>
+                {{userLang}}
             </div>
         </div>
 
@@ -20,9 +18,9 @@
 
         <div class="col-xs-12 settings-field profile" ng-click="showProfile()">{{L('profile.userData')}}</div>
         <div class="col-xs-12 settings-field mailto">
-            <a href="mailto:murdoc.ak@gamil.com">{{L('profile.letterToDev')}}</a>
+            <a href="mailto:ksu.developer@gmail.com">{{L('profile.letterToDev')}}</a>
         </div>
         <div class="col-xs-12 settings-field license" ng-click="showAgreement()">{{L('profile.licenseAgreement')}}</div>
-        <div class="col-xs-12 settings-field about" ng-click="showAgreement()">{{L('profile.about')}}</div>
+        <div class="col-xs-12 settings-field about" ng-click="showAbout()">{{L('profile.about')}}</div>
     </div>
 </div>

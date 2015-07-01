@@ -1,0 +1,18 @@
+<div class="modal-header sities-page">
+    <h3 class="modal-title">{{L('queue.organization')}}</h3>
+</div>
+<div class="modal-body sities-page">
+    <form class="form-horizontal login-form">
+        <div class="form-group">
+            <input ng-model="orgFilter" id="service" class="form-control" type="text"/>
+        </div>
+    </form>
+
+    <div class="row">
+        <div ng-repeat="org in organizations | filter : {name: orgFilter}" class="col-xs-12 city-item"
+             ng-class="{selected : selectedOrg.id === org.id}" ng-click="selectOrg(org)">{{org.name}}</div>
+    </div>
+</div>
+<div class="modal-footer">
+    <a href class="btn-apply-100" ng-click="ok()">{{L('app.done')}}</a>
+</div>
