@@ -8,7 +8,8 @@
 angular
     .module('core')
     .directive('loadingLayer', [
-        function() {
+        '$rootScope',
+        function($rootScope) {
             return {
                 // name: '',
                 // priority: 1,
@@ -17,11 +18,11 @@ angular
                 controller: function($scope, $element, $attrs, $transclude) {
                     //$scope.$broadcast('loading.show', [1,2,3]);
                     $scope.isShow = false;
-                    $scope.$on('loading.show', function(event, data) {
+                    $rootScope.$on('loading.show', function(event, data) {
                         $scope.isShow = true;
                     });
 
-                    $scope.$on('loading.hide', function(event, mass) {
+                    $rootScope.$on('loading.hide', function(event, mass) {
                         $scope.isShow = false;
                     })
                 },

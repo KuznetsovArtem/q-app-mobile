@@ -38,7 +38,7 @@
     </div>
 
     <div class="queue-footer row" >
-        <div ng-click="clear()" class="cansel-btn col-xs-6">{{L('queue.canselBtn')}}</div>
+        <div ng-click="clear(-1)" class="cansel-btn col-xs-6">{{L('queue.canselBtn')}}</div>
         <div ng-click="time&&addQueue()" ng-class="{'reg-btn' : time, 'cansel-btn': !time}" class="reg-btn col-xs-6">{{L('queue.signupBtn')}}</div>
     </div>
 

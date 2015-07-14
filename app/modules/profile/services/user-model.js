@@ -18,7 +18,7 @@ angular
 
             var userSchema = { // test data; TOTO: rm
                 "phone": "",
-                "email": "test@.com",
+                "email": "",
                 "login": "",
                 "password": "",
                 "firstname": "",

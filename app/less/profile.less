@@ -74,7 +74,13 @@
   label {
     padding-left: 10px;
   }
-
+  &.register-body {
+    input {
+      &:disabled, &[disabled=disabled] {
+        opacity: .4 !important;
+      }
+    }
+  }
   .settings-field {
     &.row {
       margin-right: 0;
@@ -108,12 +114,14 @@
     background-position: 5px 5px;
     background-repeat: no-repeat;
   }
+
   input {
     .input-fix();
   }
   .city-item {
     margin-top: 15px;
     padding: 15px;
+    padding-right: 18%;
     background: @brand-gray-1 url("../img/ui/icon_checkbox_no.png") no-repeat 90% center;
     &.selected {
       background-image: url("../img/ui/icon_checkbox_yes.png");

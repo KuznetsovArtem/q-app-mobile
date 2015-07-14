@@ -18,7 +18,8 @@ angular
         '$scope',
         '$modalInstance',
         'user',
-        function($scope, $modalInstance, user) {
+        '$modal',
+        function($scope, $modalInstance, user, $modal) {
             $scope.user = user;
 
             $scope.registerPage = true;
@@ -30,7 +31,21 @@ angular
             };
 
             $scope.cancel = function () {
-                $modalInstance.dismiss('cancel');
+                $modal.open({
+                    animation: false,
+                    templateUrl: 'modules/profile/views/cansel-modal.html',
+                    controller: function($scope, $modalInstance) {
+                        $scope.ok = function () {
+                            $modalInstance.close();
+                        };
+                        $scope.cancel = function () {
+                            $modalInstance.dismiss('cancel');
+                        };
+                    }
+                }).result.then(function () {
+                        $modalInstance.dismiss('cancel');
+                }, function () {});
+
             };
         }
     ])

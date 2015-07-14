@@ -173,6 +173,12 @@ angular
                     animation: $scope.animationsEnabled,
                     templateUrl: 'modules/queue/views/date-select.html',
                     controller: 'DateController',
+                    resolve: {
+                        dateModel: ['DateModel', function(DateModel) {
+                            return DateModel.get($scope.service.id);
+                        }]
+                        // TODO: selected date;
+                    },
                     size: size
                 });
 
@@ -189,6 +195,9 @@ angular
                     resolve: {
                         timeList : ['timeList', function(timeList) {
                             return timeList.get();
+                        }],
+                        timeModel: ['TimeModel', function(TimeModel) {
+                            return TimeModel.get($scope.service.id);
                         }]
                     },
                     controller: 'TimeController',
@@ -254,30 +263,51 @@ angular
             };
 
             $scope.clear = function(type) {
-                $scope.time = '';
-                $scope.date = '';
-                if(type <= 1) {
-                    $scope.service = {};
+                var clearFields = function(type) {
+                    $scope.time = '';
+                    $scope.date = '';
+                    if(type <= 1) {
+                        $scope.service = {};
+                    }
+                    if(type === -1) {
+                        $scope.organization = {};
+                        $scope.service = {};
+                    }
+                };
+
+                if(type === -1) {
+                    $modal.open({
+                        animation: false,
+                        templateUrl: 'modules/queue/views/delete-modal.html',
+                        controller: function($scope, $modalInstance) {
+                            $scope.ok = function () {
+                                $modalInstance.close();
+                            };
+                            $scope.cancel = function () {
+                                $modalInstance.dismiss('cancel');
+                            };
+                        }
+                    }).result.then(function () {
+                        clearFields(type);
+                    }, function () {});
+                } else {
+                    clearFields(type);
                 }
-                if(!type) {
-                    $scope.organization = {};
-                    $scope.service = {};
-                }
-                //$scope.organization = {};
-                //$scope.service = {};
-                //$scope.date = '';
-                //$scope.time = '';
+
             };
 
             $scope.addQueue = function() {
-                QueueModel.save({
+                var model = {
                     organization: $scope.organization,
                     service :  $scope.service,
                     date: $scope.date,
                     time: $scope.time,
                     rate: '',
                     isArchive: false
-                }).then(function() {
+                };
+
+                QueueModel.add(model);
+                QueueModel.save(model).then(function() {
                     $state.go('queueList');
                 });
             }

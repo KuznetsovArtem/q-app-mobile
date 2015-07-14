@@ -30,6 +30,14 @@
     }
   }
 
+  .sign-up-btn {
+    text-align: center;
+    padding: 15px 15px 15px 50px !important;
+    color: #e1e1e1;
+    min-width: 200px;
+    background: #3c6397 url("../img/ui/icon_name.png") no-repeat 5px 5px;
+  }
+
   .login-form {
     color: @brand-gray-4;
 
@@ -48,12 +56,16 @@
     }
     input {
       .border-radius();
-      border: none;
+      //border: none;
       height: 50px;
       padding-left: 50px;
       -webkit-box-shadow: none;
+      border: 1px solid @brand-gray-1 !important;
       &:focus {
         border: 1px solid @brand-gray-2;
+      }
+      &:disabled, &[disabled=disabled] {
+        opacity: .4 !important;
       }
     }
   }
