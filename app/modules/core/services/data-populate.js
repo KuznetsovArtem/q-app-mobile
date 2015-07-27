@@ -117,7 +117,7 @@ angular
 
             return {
                 run : function() {
-                    User.save(userSchema);
+                    //User.save(userSchema);
                     Queue.saveAll(queuesSchema);
                     Orgs.save(organizationsSchema);
                     Services.save(servicesSchema);

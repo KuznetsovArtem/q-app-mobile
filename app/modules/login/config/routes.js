@@ -27,9 +27,9 @@ angular
                     templateUrl: 'modules/login/views/login.html',
                     controller: 'LoginController',
                     resolve: {
-                        auth: ['AuthService', function (AuthService) {
-                            return AuthService.isLoggedIn();
-                        }]
+                        //auth: ['AuthService', function (AuthService) {
+                        //    return AuthService.isLoggedIn();
+                        //}]
                     }
                 });
         }

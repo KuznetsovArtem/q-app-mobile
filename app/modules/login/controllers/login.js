@@ -18,16 +18,22 @@ angular
         '$scope',
         '$modalInstance',
         'user',
+        'UserModel',
         '$modal',
-        function($scope, $modalInstance, user, $modal) {
+        function($scope, $modalInstance, user, UserModel, $modal) {
             $scope.user = user;
 
+
+            console.log("Register:", user, UserModel);
             $scope.registerPage = true;
 
             $scope.ok = function () {
-                $modalInstance.close(
-                    $scope.user
-                );
+                UserModel.register($scope.user).then(function(data) {
+                    console.log("Register:OK", data);
+                    $modalInstance.close(data);
+                }, function() {
+                    console.log('error');
+                });
             };
 
             $scope.cancel = function () {
@@ -57,10 +63,9 @@ angular
         '$modal',
         '$log',
         'UserModel',
-        'auth',
         'DataPopulate',
         '$modalStack',
-        function($scope, $cordovaNetwork, localizationService, $state, $modal, $log, UserModel, auth, Populate, $modalStack) {
+        function($scope, $cordovaNetwork, localizationService, $state, $modal, $log, UserModel, Populate, $modalStack) {
 
             // No internet
             document.addEventListener("deviceready", function () {
@@ -86,26 +91,33 @@ angular
                 }
             }, false);
 
-            // No device back button
+            // Device back button no exit + close modals;
             document.addEventListener("backbutton", function(e) {
                 $modalStack.dismissAll();
                 e.preventDefault();
             } , false);
 
+
+            // The APP
             var defState = 'settings';
 
             $scope.isValid = function() {
                 return $scope.loginForm.$valid
             };
 
+            // Login
             $scope.login = function() {
-                Populate.run();
-                //if(auth) { // TODO: check auth
-                    // TODO: rm population;
-                   $state.go(defState, {}, {reload: false});
-                //}
+
+                UserModel.login({username: $scope.username, password: $scope.password}).then(function() {
+                    Populate.run(); // TODO: no populate
+                    $state.go(defState, {}, {reload: false});
+                }, function(rejection) {
+                    console.log(rejection); // TODO: show UI error;
+                });
+
             };
 
+            // New User
             $scope.registerUser = function() {
                 var modalRegister = $modal.open({
                     animation: false,
@@ -130,7 +142,6 @@ angular
             };
 
             $scope.animationsEnabled = false; // TODO: move to config factory
-
             $scope.restorePass = function (size) {
 
                 var modalInstance = $modal.open({
@@ -146,7 +157,6 @@ angular
                     $log.info('Modal dismissed at: ' + new Date());
                 });
             };
-
         }
     ])
     .controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
@@ -155,7 +165,7 @@ angular
         };
 
         $scope.cancel = function () {
-            $modalInstance.dismiss('user cancel');
+            $modalInstance.dismiss(false);
         };
     })
     ;

@@ -30,7 +30,7 @@ angular
                             return UserModel.getUser(1);
                         }]
                     },
-                    controller: 'SettingsController',
+                    controller: 'SettingsController'
                 });
         }
     ]);
