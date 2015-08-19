@@ -397,7 +397,6 @@ body {
 .queue-page .price-block .price-block-title {
   font-size: 16px;
   line-height: 20px;
-  width: 100px;
   padding: 10px 0;
 }
 .queue-page .price-block .price-block-title.free {
@@ -466,6 +465,9 @@ body {
   margin-top: 15px;
   padding: 15px;
   background: #e1e1e1 url("../img/ui/icon_checkbox_blue_no.png") no-repeat 90% center;
+}
+.time-page .time-item.non-allow {
+  background: #cccccc !important;
 }
 .time-page .time-item.selected {
   background-image: url("../img/ui/icon_checkbox_blue_yes.png");
@@ -549,20 +551,30 @@ body {
   margin: 0;
   margin-top: 15px;
   color: #3c6397;
-  background-image: url("../img/ui/icon_soon.png");
-  background-position: 10px 25px;
-  background-repeat: no-repeat;
 }
 .queue-list-page .item.finished {
   color: #c2c2c2;
   background-image: url("../img/ui/icon_archive.png");
 }
+.queue-list-page .item .item-header {
+  border-bottom: 1px solid #3c6397;
+  padding-bottom: 5px;
+}
+.queue-list-page .item .item-header .receipt-num {
+  font-weight: bold;
+  line-height: 42px;
+  font-size: 24px;
+  padding-left: 70px;
+  background-image: url("../img/ui/icon_soon.png");
+  background-position: 15px center;
+  background-repeat: no-repeat;
+}
 .queue-list-page .item .content-block {
-  padding: 5px 15px 5px 60px;
+  padding: 5px 15px 5px 15px;
 }
 .queue-list-page .item .edit-link {
-  min-height: 90px;
-  height: 100%;
+  min-height: 100%;
+  height: inherit;
   background-color: #c2c2c2;
   background-image: url("../img/ui/icon_more.png");
   background-position: center;
@@ -610,6 +622,7 @@ body {
   border: 1px solid #cccccc;
 }
 .modal-dialog .modal-content .modal-footer {
+  z-index: 1100;
   height: 50px;
   padding: 0;
   text-align: center;
@@ -694,6 +707,12 @@ body {
   background-image: url("../img/ui/icon_at.png");
 }
 #organization {
+  background-image: url("../img/ui/icon_name.png");
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
+  background-image: url("../img/ui/icon_company.png");
+}
+#center {
   background-image: url("../img/ui/icon_name.png");
   background-position: 5px 5px;
   background-repeat: no-repeat;

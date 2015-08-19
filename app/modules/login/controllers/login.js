@@ -22,14 +22,10 @@ angular
         '$modal',
         function($scope, $modalInstance, user, UserModel, $modal) {
             $scope.user = user;
-
-
-            console.log("Register:", user, UserModel);
             $scope.registerPage = true;
 
             $scope.ok = function () {
                 UserModel.register($scope.user).then(function(data) {
-                    console.log("Register:OK", data);
                     $modalInstance.close(data);
                 }, function() {
                     console.log('error');
@@ -63,9 +59,9 @@ angular
         '$modal',
         '$log',
         'UserModel',
-        'DataPopulate',
+        'QueueModel',
         '$modalStack',
-        function($scope, $cordovaNetwork, localizationService, $state, $modal, $log, UserModel, Populate, $modalStack) {
+        function($scope, $cordovaNetwork, localizationService, $state, $modal, $log, UserModel, QueueModel, $modalStack) {
 
             // No internet
             document.addEventListener("deviceready", function () {
@@ -99,7 +95,7 @@ angular
 
 
             // The APP
-            var defState = 'settings';
+            var defState = 'queueAdd';
 
             $scope.isValid = function() {
                 return $scope.loginForm.$valid
@@ -107,14 +103,13 @@ angular
 
             // Login
             $scope.login = function() {
-
                 UserModel.login({username: $scope.username, password: $scope.password}).then(function() {
-                    Populate.run(); // TODO: no populate
-                    $state.go(defState, {}, {reload: false});
+                    QueueModel.get().then(function() {
+                        $state.go(defState, {}, {reload: false});
+                    });
                 }, function(rejection) {
                     console.log(rejection); // TODO: show UI error;
                 });
-
             };
 
             // New User
@@ -137,21 +132,17 @@ angular
                         console.log('error');
                     });
                 }, function () {
-                    $log.info('Modal dismissed at: ' + new Date());
                 });
             };
 
             $scope.animationsEnabled = false; // TODO: move to config factory
             $scope.restorePass = function (size) {
-
-                var modalInstance = $modal.open({
+                $modal.open({
                     animation: $scope.animationsEnabled,
                     templateUrl: 'modules/login/views/restore-pass.html',
                     controller: 'ModalInstanceCtrl',
                     size: size
-                });
-
-                modalInstance.result.then(function (selectedItem) {
+                }).result.then(function (selectedItem) {
                     $scope.selected = selectedItem;
                 }, function () {
                     $log.info('Modal dismissed at: ' + new Date());

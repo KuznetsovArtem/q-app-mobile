@@ -1,11 +1,11 @@
 <!--<div class="modal-header">
     <h3 class="modal-title">{{L('login.restorePwd')}}</h3>
 </div>-->
-<div class="modal-body time-page">
-    <div class="time-hero text-center">{{showTime}}</div>
+<div class="modal-body time-page" modal-max-height>
+    <div class="time-hero text-center">{{showTime | date : 'HH:mm' : '-0000'}}</div>
     <div class="row">
-        <div ng-repeat="hour in timeList" class="col-xs-6">
-            <div class="time-item" ng-class="{'selected' : selectedTime === hour}" ng-click="setTime(hour)">{{hour}}:00</div>
+        <div ng-repeat="item in timeModel" class="col-xs-6">
+            <div class="time-item" ng-class="{'selected' : selectedTime === item.time, 'non-allow' : !item.isAllow}" ng-click="item.isAllow&&setTime(item.time)">{{item.time | date : 'HH:mm' : '-0000'}}</div>
         </div>
     </div>
 </div>

@@ -11,9 +11,9 @@ angular
     .controller('QueueListController', [
         '$scope',
         '$filter',
-        'localStorageService',
-        function($scope, $filter, Storage) {
-            $scope.queues = angular.fromJson(Storage.get('queuesModel'));
+        'queueListModel',
+        function($scope, $filter, queues) {
+            $scope.queues = queues;
 
             $scope.calcEstimate = function(eDate) {
                 var estimateTime = ~~((new Date(eDate) - new Date()) / (1000*60*60));

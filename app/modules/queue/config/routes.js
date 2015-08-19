@@ -25,6 +25,11 @@ angular
                 .state('queueList', {
                     url: '/queue/list',
                     templateUrl: 'modules/queue/views/queue-list.html',
+                    resolve: {
+                        queueListModel: ['QueueModel', function (QueueModel) {
+                            return QueueModel.get();
+                        }]
+                    },
                     controller: 'QueueListController'
                 })
                 .state('queueAdd', {
@@ -35,6 +40,11 @@ angular
                 .state('queueView', {
                     url: '/queue/:id',
                     templateUrl: 'modules/queue/views/queue-edit.html',
+                    resolve: {
+                        queueListModel: ['QueueModel', function (QueueModel) {
+                            return QueueModel.get();
+                        }]
+                    },
                     controller: 'QueueEditController'
                 })
                 .state('queueEdit', {

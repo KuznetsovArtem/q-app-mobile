@@ -13,20 +13,34 @@
     //margin-left: -15px;
     margin-top: 15px;
     color: @brand-blue;
-    background-image: url("../img/ui/icon_soon.png");
-    background-position: 10px 25px;
-    background-repeat: no-repeat;
+    //background-image: url("../img/ui/icon_soon.png");
+    //background-position: 10px 25px;
+    //background-repeat: no-repeat;
     &.finished {
       color: @brand-gray-3;
       background-image: url("../img/ui/icon_archive.png");
     }
 
+    .item-header {
+      border-bottom: 1px solid @brand-blue;
+      padding-bottom: 5px;
+      .receipt-num {
+        font-weight: bold;
+        line-height: 42px;
+        font-size: 24px;
+        padding-left: 70px;
+        background-image: url("../img/ui/icon_soon.png");
+        background-position: 15px center;
+        background-repeat: no-repeat;
+      }
+    }
+
     .content-block {
-      padding: 5px 15px 5px 60px;
+      padding: 5px 15px 5px 15px;
     }
     .edit-link {
-      min-height: 90px;
-      height: 100%;
+      min-height: 100%;
+      height: inherit;
       background-color: @brand-gray-3;
       background-image: url("../img/ui/icon_more.png");
       background-position: center;

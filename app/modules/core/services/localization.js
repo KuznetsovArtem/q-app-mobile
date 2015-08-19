@@ -8,8 +8,10 @@ angular
             $get: ['$rootScope', function($rootScope) {
                 var data = {
                     ru : {
+                        'app.error.LOGIN_FAILED'      : 'Неверный телефон или пароль',
                         'app.done'  : 'ГОТОВО',
                         'app.noConnection'            : 'Нет соединения',
+                        'app.genericError'            : 'Произошла ошибка',
                         'login.loginButton'           : 'ВОЙТИ',
                         'login.login'                 : 'Логин',
                         'login.loginHolder'           : 'Телефон',
@@ -50,16 +52,18 @@ angular
                         'queue.date'                    : 'Дата',
                         'queue.time'                    : 'Время',
                         'queue.registeringCost'         : 'стоимость регистрации',
-                        'queue.free'                    : 'Бесплатно',
+                        'queue.free'                    : 'Тестовый режим',
                         'queue.timeLeft'                : 'Осталось',
                         'queue.rateHeader'              : 'Оценить качество',
                         'queue.delete'                  : 'Удалить услугу?',
                         'queue.canselBtn'               : 'ОТМЕНА',
-                        'queue.signupBtn'               : 'РЕГИСТРАЦИЯ'
+                        'queue.signupBtn'               : 'РЕГИСТРАЦИЯ',
+                        'queue.serviceCenter'           : 'Центр обслуживания'
                     },
                     ua : {
                         'app.done'  : 'ГОТОВО',
                         'app.noConnection'            : 'Выдсутнє з\'єднання',
+                        'app.genericError'            : 'Виникла помилка',
                         'login.loginButton'           : 'УВІЙТИ',
                         'login.login'                 : 'Логін',
                         'login.loginHolder'           : 'Телефон',
@@ -100,17 +104,19 @@ angular
                         'queue.date'                    : 'Дата',
                         'queue.time'                    : 'Час',
                         'queue.registeringCost'         : 'вартість реєстрації',
-                        'queue.free'                    : 'Безкоштовно',
+                        'queue.free'                    : 'Тестовий режим',
                         'queue.timeLeft'                : 'Залишилось',
                         'queue.rateHeader'              : 'Оцінити якість',
                         'queue.delete'                  : 'Видалити послугу?',
                         'queue.canselBtn'               : 'СКАСУВАТИ',
-                        'queue.signupBtn'               : 'РЕЄСТРАЦІЯ'
+                        'queue.signupBtn'               : 'РЕЄСТРАЦІЯ',
+                        'queue.serviceCenter'           : 'Центр обслуговування'
                     },
                     en : {
                         'app.done'  : 'DONE',
                         'app.noConnection'            : 'No connection',
                         'login.loginButton'           : 'LOGIN',
+                        'app.genericError'            : 'An error has occurred',
                         'login.login'                 : 'Login',
                         'login.loginHolder'           : 'Phone',
                         'login.password'              : 'Password',
@@ -150,12 +156,13 @@ angular
                         'queue.date'                    : 'Date',
                         'queue.time'                    : 'Time',
                         'queue.registeringCost'         : 'the cost of registering',
-                        'queue.free'                    : 'Free',
+                        'queue.free'                    : 'Testing',
                         'queue.timeLeft'                : 'Left',
                         'queue.rateHeader'              : 'Rate the quality',
                         'queue.delete'                  : 'Remove service?',
                         'queue.canselBtn'               : 'CANCEL',
-                        'queue.signupBtn'               : 'SIGN UP'
+                        'queue.signupBtn'               : 'SIGN UP',
+                        'queue.serviceCenter'           : 'Service center'
                     }
                 };
 

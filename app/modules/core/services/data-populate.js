@@ -56,7 +56,7 @@ angular
                 date: '2015-07-18',
                 time: '13-00',
                 rate: 3,
-                isArchive : false
+                isArchive : true
             },{
                 id: 5,
                 organization: {
@@ -70,7 +70,7 @@ angular
                 date: '2015-07-24',
                 time: '13-00',
                 rate: 3,
-                isArchive : false
+                isArchive : true
             },{
                 id: 6,
                 organization: {
@@ -118,9 +118,9 @@ angular
             return {
                 run : function() {
                     //User.save(userSchema);
-                    Queue.saveAll(queuesSchema);
-                    Orgs.save(organizationsSchema);
-                    Services.save(servicesSchema);
+                    //Queue.saveAll(queuesSchema);
+                    //Orgs.save(organizationsSchema);
+                    //Services.save(servicesSchema);
                 }
             }
         }

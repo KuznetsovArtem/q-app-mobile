@@ -28,31 +28,6 @@ angular
             // http
             $http.defaults.useXDomain = true;
 
-            $scope.useCORS = function() {
-                $http.get('https://jsonp.afeld.me/?url=http://jsonview.com/example.json')
-                    .success(function(data) {
-                        console.log(data);
-                        alert(data.awesome);
-                    });
-            };
-
-            $scope.useGET = function() {
-                $http.get('http://jsonview.com/example.json')
-                    .success(function(data) {
-                        console.log(data);
-                        alert(data.awesome);
-                    });
-            };
-
-            $scope.useJSONP = function() {
-                $http.jsonp('https://jsonp.afeld.me/?callback=JSON_CALLBACK&url=http://jsonview.com/example.json')
-                    .success(function(data) {
-                        console.log(data);
-                        alert(data.notLink);
-                    }).error(function() {
-                        alert('no data');
-                    });
-            };
             // vibro
             $scope.vibrate = function() {
                 $cordovaVibration.vibrate([100, 200, 100, 500, 200, 500, 100, 200, 100, 500, 200, 500]);
@@ -78,16 +53,11 @@ angular
 
             // geolocation
             $scope.getLocation = function () {
-
                 $cordovaGeolocation
                     .getCurrentPosition({timeout: 10000, enableHighAccuracy: false})
                     .then(function (position) {
-                        console.log("position found");
                         $scope.position = position;
-                        // long = position.coords.longitude
-                        // lat = position.coords.latitude
                     }, function (err) {
-                        console.log("unable to find location");
                         $scope.errorMsg = "Error : " + err.message;
                     });
             };

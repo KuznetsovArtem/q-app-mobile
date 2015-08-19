@@ -83,7 +83,11 @@ angular
                     var deferred = $q.defer();
                     $http.post(host + customersUrl, user).
                         success(function(res, status, headers, config) {
-                            deferred.resolve(storageSave(prepUser(res)));
+                            if(res.error) {
+                                deferred.reject(res);
+                            } else {
+                                deferred.resolve(storageSave(prepUser(res)));
+                            }
                         }).
                         error(function(data, status, headers, config) {
                             deferred.reject(user);
@@ -96,9 +100,13 @@ angular
 
                     $http.post(host + loginUrl, cred).
                         success(function(data, status, headers, config) {
-                            deferred.resolve(
-                                self.getUser(data.userId, data.id)
-                            );
+                            if(!data.id) {
+                                deferred.reject(data);
+                            } else {
+                                deferred.resolve(
+                                    self.getUser(data.userId, data.id)
+                                );
+                            }
                         }).
                         error(function(data, status, headers, config) {
                             deferred.reject(data);
