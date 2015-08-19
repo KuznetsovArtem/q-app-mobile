@@ -24,7 +24,7 @@
 
 # Дополнительно
 
-Для теста API запросом без проблем с кросс-домен политикой:
+Для работы с API запросами без проблем с кросс-домен политикой:
 
 * Скачиваем Chromium (https://www.chromium.org/getting-involved/download-chromium);
 * Добавляем " --disable-web-security" в свойства ярлыка;
