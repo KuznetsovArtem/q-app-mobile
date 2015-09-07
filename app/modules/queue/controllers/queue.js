@@ -15,10 +15,9 @@ angular
         '$filter',
         '$state',
         '$stateParams',
-        '$controller',
         'QueueModel',
         'queueListModel',
-        function ($scope, l, $modal, $filter, $state, $stateParams, $controller, QueueModel, queueListModel) {
+        function ($scope, l, $modal, $filter, $state, $stateParams, QueueModel, queueListModel) {
 
             var queue = $scope.queue = $filter('filter')(queueListModel, {id: $stateParams.id})[0];
 
@@ -226,6 +225,115 @@ angular
             };
         }
     ])
+    .provider('QpushNotification', [function() {
+        var usePushNotification = false;
+
+        this.usePushNotification = function(value) {
+            usePushNotification = !!value;
+        };
+
+        this.$get = ['$q', '$http', 'UserModel', function ($q, $http, UserModel) {
+
+            // Bootstrap the push after login
+            document.addEventListener("deviceready", function () {
+                var push = PushNotification.init({
+                    'android': {
+                        'senderID': '420291911924',
+                        'iconColor': '#3c6397'
+                    },
+                    "ios": {}, "windows": {} } );
+
+                push.on('registration', function(data) {
+                    // The api
+
+                    // ok
+                    //        {
+                    //            "count": 1
+                    //        }
+
+                    // false
+                    //        {
+                    //            "count": 0
+                    //        }
+                    // data.registrationId
+                    // "APA91bEJNr1YxswwzYYeTFXWTsakXox3OtzVMW2ZOFp_wM6Kos5YzMPyG0zHrvv1OOsYGyFcGqnaRD8Rr4rvQYAFza6RoSJLaq75aXIeSR6EPfvlGYm4rsBEfTskxfgXXYKxnMYukZs4"
+                    var msg = {
+                        "to": "APA91bEJNr1YxswwzYYeTFXWTsakXox3OtzVMW2ZOFp_wM6Kos5YzMPyG0zHrvv1OOsYGyFcGqnaRD8Rr4rvQYAFza6RoSJLaq75aXIeSR6EPfvlGYm4rsBEfTskxfgXXYKxnMYukZs4",
+                        "data": {
+                            "title":"Готово",
+                            "message": "Тест сообщения на кириллице",
+                            "style": "inbox",
+                            "summaryText": "You have %n% msgs",
+                            "actions": [
+                                { "icon": "emailGuests", "title": "VIEW", "callback": "app.emailGuests"},
+                                { "icon": "snooze", "title": "READY", "callback": "app.snooze"}
+                            ]
+                        }
+                    };
+                    var msg = {
+                        "to": "APA91bEJNr1YxswwzYYeTFXWTsakXox3OtzVMW2ZOFp_wM6Kos5YzMPyG0zHrvv1OOsYGyFcGqnaRD8Rr4rvQYAFza6RoSJLaq75aXIeSR6EPfvlGYm4rsBEfTskxfgXXYKxnMYukZs4",
+                        "data": {
+                            "title":"Готово",
+                            "message": "Тест сообщения на кириллице",
+                            "style": "inbox",
+                            "summaryText": "You have %n% msgs"
+                        }
+                    };
+                    var msg = {
+                        "to": "APA91bEJNr1YxswwzYYeTFXWTsakXox3OtzVMW2ZOFp_wM6Kos5YzMPyG0zHrvv1OOsYGyFcGqnaRD8Rr4rvQYAFza6RoSJLaq75aXIeSR6EPfvlGYm4rsBEfTskxfgXXYKxnMYukZs4",
+                        "data": {
+                            "title":"Котик",
+                            "message": "Услуга готова",
+                            "style": "picture",
+                            "picture": "http://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg",
+                            "summaryText": "Услуга готова (длинное описание)"
+                        }
+                    };
+                    var msg2 =   {
+                        "to": "APA91bEJNr1YxswwzYYeTFXWTsakXox3OtzVMW2ZOFp_wM6Kos5YzMPyG0zHrvv1OOsYGyFcGqnaRD8Rr4rvQYAFza6RoSJLaq75aXIeSR6EPfvlGYm4rsBEfTskxfgXXYKxnMYukZs4",
+                        "data": {
+                            "message": "This is a GCM Topic Message!"
+                        }
+                    };
+                    console.log('reg data: ', data);
+
+
+                    UserModel.getUser(1).then(function(user) {
+
+                        $http.post('http://88.198.194.40:3001/api/pushes/register/:userId'.replace(':userId', user.id), {
+                            token: data.registrationId
+                        }).
+                            success(function(data) {
+                                console.log('API push registration data:', data);
+                            }).
+                            error(function(rejection) {
+                                console.log('ERROR: API push registration data:', rejection);
+                            });
+                    });
+                });
+
+                push.on('notification', function(data) {
+                    console.log('notification', data);
+                    // data.message,
+                    // data.title,
+                    // data.count,
+                    // data.sound,
+                    // data.image,
+                    // data.additionalData
+                });
+
+                push.on('error', function(e) {
+                    console.log('error', e);
+                    // e.message
+                });
+            }, false);
+
+            return {
+                ok:'ok',
+                config: usePushNotification
+            }
+        }];
+    }])
     .controller('QueueController', [
         '$scope',
         'localizationService',
@@ -233,7 +341,11 @@ angular
         '$state',
         '$filter',
         'QueueModel',
-        function($scope, localizationService, $modal, $state, $filter, QueueModel) {
+        'QpushNotification',
+        function($scope, localizationService, $modal, $state, $filter, QueueModel, QpushNotification) {
+
+            // TODO: make logic on config value;
+            console.log('QpushNotificationProvider', QpushNotification);
 
             $scope.date = '';
             $scope.time = '';

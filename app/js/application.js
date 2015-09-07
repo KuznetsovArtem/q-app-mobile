@@ -5,9 +5,10 @@ angular
 
 angular
     .module(ApplicationConfiguration.applicationModuleName)
-    .config(['$locationProvider',
-        function($locationProvider) {
+    .config(['$locationProvider', 'QpushNotificationProvider',
+        function($locationProvider, QpushNotification) {
             $locationProvider.hashPrefix('!');
+            QpushNotification.usePushNotification(true);
         }
     ]);
 
